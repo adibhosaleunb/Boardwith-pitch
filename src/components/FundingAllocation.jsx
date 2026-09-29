@@ -9,7 +9,7 @@ export default function FundingAllocation({ label, funds }) {
   const total = funds.reduce((sum, f) => sum + f.value, 0);
   return (
     <figure className={styles.funds}>
-      <figcaption className={styles.caption}>{label}</figcaption>
+      {label ? <figcaption className={styles.caption}>{label}</figcaption> : null}
       <div className={styles.bar} aria-hidden="true">
         {funds.map((f, i) => (
           <span key={f.label} style={{ flexGrow: f.value / total, opacity: OPACITY[i] }} />

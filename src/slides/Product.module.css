@@ -8,8 +8,13 @@
   margin-top: 16px;
 }
 
+.conceptTag {
+  align-self: flex-start;
+  margin-top: 40px;
+}
+
 .journey {
-  margin-top: 22px;
+  margin-top: 16px;
 }
 
 .sources {

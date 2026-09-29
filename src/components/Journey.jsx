@@ -1,5 +1,4 @@
 import PhoneScreen from './PhoneScreen.jsx';
-import EvidenceTag from './EvidenceTag.jsx';
 import styles from './Journey.module.css';
 
 // Four steps joined by a route line; the numbers belong here because this
@@ -13,7 +12,6 @@ export default function Journey({ steps }) {
             <span className={styles.num} aria-hidden="true">
               {i + 1}
             </span>
-            <EvidenceTag kind="concept" />
           </div>
           <PhoneScreen index={i} />
           <p className={styles.title}>

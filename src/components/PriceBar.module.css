@@ -4,9 +4,17 @@
   margin: 0;
 }
 
+.caption {
+  font-family: var(--font-text);
+  font-size: 32px;
+  line-height: 1.3;
+  color: var(--bw-grey-600);
+  margin-bottom: 20px;
+}
+
 .above {
   position: relative;
-  height: 56px;
+  height: 60px;
 }
 
 .label {
@@ -55,7 +63,7 @@
 
 .below {
   position: relative;
-  height: 112px;
+  height: 80px;
 }
 
 .leaders {

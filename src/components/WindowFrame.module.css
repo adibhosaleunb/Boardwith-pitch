@@ -64,10 +64,10 @@
   padding: 4px;
 }
 
-/* Slide 8 team photos: 160 × 234, a single 6px teal-100 ring on white. */
+/* Slide 8 team photos: 200 × 292, a single 6px teal-100 ring on white. */
 .small {
-  width: 160px;
-  height: 234px;
+  width: 200px;
+  height: 292px;
   padding: 6px;
   background: var(--bw-teal-100);
 }
@@ -80,7 +80,7 @@
 :global(.is-reading) .small {
   width: 120px;
   height: auto;
-  aspect-ratio: 160 / 234;
+  aspect-ratio: 200 / 292;
   padding: 4px;
 }
 

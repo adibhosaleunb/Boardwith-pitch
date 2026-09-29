@@ -66,10 +66,12 @@
   font-weight: 600;
 }
 
+/* Chart labels: 28px (brief, 11.3). */
 .where,
 .meta {
-  font-size: 32px;
-  line-height: 1.28;
+  font-size: 28px;
+  line-height: 1.25;
+  font-weight: 500;
 }
 
 .meta {

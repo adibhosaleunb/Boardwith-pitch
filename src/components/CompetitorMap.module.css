@@ -9,86 +9,67 @@
   inset: 0;
 }
 
-.yTitle,
+/* Axis labels: 28px, grey-600 (brief, 11.3). */
+.yTo,
 .yFrom,
 .xFrom,
 .xTo {
   position: absolute;
-  font-size: 32px;
+  font-size: 28px;
   line-height: 1.2;
+  font-weight: 500;
   color: var(--bw-grey-600);
   white-space: nowrap;
 }
 
-.yTitle {
-  left: 60px;
+.yTo {
+  left: 64px;
   top: 0;
 }
 
 .yFrom {
-  left: 60px;
-  top: 536px;
+  left: 64px;
+  top: 604px;
 }
 
 .xFrom {
   left: 40px;
-  top: 598px;
+  top: 672px;
 }
 
 .xTo {
-  right: 20px;
-  top: 598px;
+  right: 16px;
+  top: 672px;
 }
 
-.yTitle strong,
-.xFrom strong {
-  color: var(--bw-teal-900);
-  font-weight: 600;
-}
-
-.label {
+.name,
+.bwName {
   position: absolute;
-  width: 460px;
+  white-space: nowrap;
+  font-size: 30px;
+  line-height: 1.3;
+  font-weight: 500;
+  color: var(--bw-teal-900);
 }
 
 .alignRight {
   text-align: right;
 }
 
-.name {
-  font-size: 32px;
-  line-height: 1.2;
-  font-weight: 600;
-}
-
 /* The only filled orange on the slide: Boardwith's label. */
 .bwName {
-  display: inline-block;
-  padding: 1px 16px 0;
+  padding: 0 16px;
   border-radius: 999px;
   background: var(--bw-orange-400);
-  color: var(--bw-teal-900);
-  font-size: 32px;
-  line-height: 1.3;
   font-weight: 700;
-}
-
-.text {
-  font-size: 32px;
-  line-height: 1.2;
-  color: var(--bw-grey-600);
 }
 
 /* Reading mode: a short list in the same order. */
 .list {
   display: grid;
-  gap: 10px;
+  gap: 8px;
   font-size: clamp(16px, 4.2vw, 19px);
   line-height: 1.4;
-}
-
-.list strong {
-  font-weight: 600;
 }
 
 .listBw strong {

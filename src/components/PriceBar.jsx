@@ -3,8 +3,8 @@ import styles from './PriceBar.module.css';
 
 const WIDTH = 1680;
 // label anchors (x) for the two cost labels, which sit right-aligned in a row
-const CARD_ANCHOR = 1560;
-const CHECKS_ANCHOR = 1290;
+const CARD_ANCHOR = 1550;
+const CHECKS_ANCHOR = 1300;
 
 // One horizontal stacked bar with direct labels. Companion teal-500, costs
 // grey-300, Boardwith's share orange-400 (the slide's one orange element).
@@ -40,10 +40,8 @@ export default function PriceBar({ total, segments, caption }) {
   const [companion, checks, card, kept] = placed;
 
   return (
-    <figure className={styles.figure} aria-label={caption}>
-      <figcaption className="sr-only">
-        {caption} {segments.map((s) => `${s.label} ${s.display}`).join('; ')}.
-      </figcaption>
+    <figure className={styles.figure}>
+      <figcaption className={styles.caption}>{caption}</figcaption>
       <div className={styles.above} aria-hidden="true">
         <span className={styles.label} style={{ left: 0 }}>
           {companion.label} <strong className="num">{companion.display}</strong>
@@ -52,7 +50,7 @@ export default function PriceBar({ total, segments, caption }) {
           {kept.label} <strong className="num">{kept.display}</strong>
         </span>
       </div>
-      <div className={styles.bar} aria-hidden="true">
+      <div className={styles.bar} role="img" aria-label={segments.map((seg) => `${seg.label} ${seg.display}`).join(', ')}>
         {placed.map((seg) => (
           <span key={seg.key} className={`${styles.seg} ${styles[seg.tone]}`} style={{ width: seg.w }} />
         ))}
@@ -67,7 +65,7 @@ export default function PriceBar({ total, segments, caption }) {
           {[checks, card].map((seg) => (
             <span key={seg.key} className={styles.costItem}>
               {seg.label} <strong className="num">{seg.display}</strong>
-              <span className={styles.note}>{seg.note}</span>
+              {seg.note ? <span className={styles.note}>{seg.note}</span> : null}
             </span>
           ))}
         </div>

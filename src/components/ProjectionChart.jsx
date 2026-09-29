@@ -21,7 +21,7 @@ export default function ProjectionChart({ years, title, showCompanions = true, b
 
   return (
     <figure className={styles.chart}>
-      <figcaption className={styles.title}>{title}</figcaption>
+      {title ? <figcaption className={styles.title}>{title}</figcaption> : null}
       <div className={styles.plot}>
         {years.map((y, i) => {
           const h = Math.max(mode === 'reading' ? 6 : 10, (y.journeys / max) * maxBar);
@@ -40,10 +40,9 @@ export default function ProjectionChart({ years, title, showCompanions = true, b
       <div className={styles.labels}>
         {years.map((y) => (
           <div key={y.year} className={styles.col}>
-            <p className={styles.year}>{y.year}</p>
             <p className={styles.where}>{y.where}</p>
             <p className={styles.meta}>{y.revenue}</p>
-            {showCompanions && <p className={styles.meta}>{y.companions}</p>}
+            {showCompanions && y.companions ? <p className={styles.meta}>{y.companions}</p> : null}
           </div>
         ))}
       </div>

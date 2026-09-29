@@ -1,36 +1,15 @@
-.sub {
-  margin-top: 16px;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: 1180px 1fr;
-  column-gap: 56px;
-  margin-top: 32px;
-}
-
-.right {
+/* Map 1500 × 720, centred under the headline; no side column. */
+.map {
   display: flex;
-  flex-direction: column;
-  gap: 36px;
-  padding-top: 40px;
-}
-
-.edge em {
-  font-style: normal;
+  justify-content: center;
+  margin-top: 40px;
 }
 
 .sources {
-  margin-top: auto;
+  margin-top: 16px;
 }
 
-:global(.is-reading) .grid {
-  grid-template-columns: 1fr;
-  row-gap: 24px;
+:global(.is-reading) .map {
+  display: block;
   margin-top: 24px;
-}
-
-:global(.is-reading) .right {
-  gap: 20px;
-  padding-top: 0;
 }

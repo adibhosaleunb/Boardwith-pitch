@@ -44,6 +44,11 @@ export default function NotesPanel({ slide, index, version, onVersion, timer }) 
             ))}
           </ul>
         )}
+        {slide.sources?.length ? (
+          <p className={styles.sources}>
+            <strong>Sources:</strong> {slide.sources.join(' ')}
+          </p>
+        ) : null}
       </div>
     </aside>
   );

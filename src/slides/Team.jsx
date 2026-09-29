@@ -16,7 +16,7 @@ export default function Team({ slide, active }) {
         ))}
       </div>
       <div className={s.bottom}>
-        <p className={typo.caption}>{slide.bottomLine}</p>
+        <p className={typo.caption}>{slide.caption}</p>
         <Sources items={slide.sources} />
       </div>
     </Slide>

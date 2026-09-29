@@ -6,7 +6,7 @@
 
 export const company = {
   name: 'Boardwith',
-  oneLiner: 'A checked companion on the same flights, for parents flying alone to Canada.',
+  oneLiner: 'A checked companion for parents flying alone to Canada.',
   founder: { name: 'Aditya Bhosale', title: 'Founder & CEO' },
   stage: 'Pre-seed',
   confidential: true,
@@ -16,28 +16,29 @@ export const company = {
   website: 'boardwith.com',
 };
 
-// Slide 8. Photos are cropped by scripts/prepare-images.mjs (brief, 12.4).
+// Slide 8. Photos: public/images/team-*.webp, used as supplied (brief, 12.4).
+// Full bios are in the slide's 20-minute notes.
 export const team = [
   {
     name: 'Aditya Bhosale',
     role: 'Founder & CEO',
     initials: 'AB',
     photo: '/images/team-aditya.webp',
-    lines: ['Identity verification at Copart, 2021–2025', 'Cloud security at Skyhigh; 6+ years in production software'],
+    line: 'Identity verification at Copart',
   },
   {
     name: 'Adarsh Shaw',
     role: 'CTO',
     initials: 'AS',
     photo: '/images/team-adarsh.webp',
-    lines: ['Software architect and lead engineer at Tavant; Google Cloud certified', 'Built the AI engine behind NutriLens (Google Agentic AI Hackathon 2025)'],
+    line: 'Software architect at Tavant',
   },
   {
     name: 'Shivani Shinde',
     role: 'HR & Operations',
     initials: 'SS',
     photo: '/images/team-shivani.webp',
-    lines: ['MBA in HR and Finance; managed frontline teams at a restaurant chain', 'Leads companion recruitment, checks and support'],
+    line: 'MBA; led frontline restaurant teams',
   },
 ];
 
@@ -68,7 +69,7 @@ export const slides = [
     title: 'Title',
     layout: 'L1',
     theme: 'teal',
-    headline: 'A checked companion on the same flights, for parents flying alone to Canada.',
+    headline: 'A checked companion for parents flying alone to Canada.',
     timing: { five: 15, twenty: 60 },
     notes: {
       five: '“Hi, I’m Aditya Bhosale, founder of Boardwith. We find a background-checked companion on the same flights for parents flying alone to Canada for the first time. Let me show you why.”',
@@ -86,13 +87,12 @@ export const slides = [
     number: 2,
     title: 'Problem / Opportunity',
     layout: 'L2',
-    headline: 'At the arrival airport, a parent flying alone is nobody’s responsibility.',
-    sub: 'Need follows being alone, new to flying and short on English, not age.',
-    stories: [
-      { name: 'Shashikant P.', text: 'His mother missed her Toronto connection. He couldn’t reach her for 45 minutes.' },
-      { name: 'Meena J., 67.', text: 'Alone for 25–30 minutes after Toronto immigration, despite a wheelchair booking.' },
+    headline: 'Alone at the arrival airport, and nobody’s responsibility.',
+    numbers: [
+      { value: '45 min', label: 'Shashikant P. lost contact with his mother in Toronto.' },
+      { value: '25–30 min', label: 'Meena J., 67, alone after immigration, despite a wheelchair booking.' },
+      { value: '59%', label: 'of 401 surveyed struggle to find help they trust.' },
     ],
-    metric: { value: '59%', label: 'of 401 people surveyed found trustworthy help hard to find', tag: { kind: 'evidence' } },
     sources: [
       'Interviews, September 2026 (6 conversations, in person and by phone).',
       'Survey of 401 respondents, April–May 2026.',
@@ -101,6 +101,7 @@ export const slides = [
     notes: {
       five: '“When my mother first flew home to India alone, I watched her through the glass at Fredericton airport. I couldn’t reach her. In Dubai, a stranger walked her to her connection. This September I interviewed six families and travellers. Shashikant’s mother missed her Toronto connection; he couldn’t reach her for 45 minutes. Meena, 67, was left alone after Toronto immigration for almost half an hour, despite a wheelchair booking. Once they land, no one is responsible for them. And it isn’t age: it’s being alone, new to flying and short on English. In our survey of 401 people, 59% found trustworthy help hard to find.”',
       twenty: [
+        'Said, not shown: need follows being alone, new to flying and short on English, not age.',
         'Tell the mother story in full: four flights, three connections, Fredericton–Toronto–Dubai–Delhi–Indore; the stranger in Dubai.',
         'What families already spend: wheelchair assistance booked for parents who can walk (four or five families the founder knows); C$282.50 for one airport’s escort at Toronto; a second ticket plus time off; Shashikant delayed his mother’s next visit three months; Nikhil paid C$70 more for a longer connection.',
         'The learning: three interviewees found Toronto or Montreal hardest (immigration, re-checking bags, a domestic connection), not the Gulf hub. A couple, 64 and 60, managed fine: “I am 64, not 84.”',
@@ -117,16 +118,14 @@ export const slides = [
     title: 'Value proposition',
     layout: 'L2',
     headline: 'One checked companion, the whole way.',
-    sub: 'Known to the family before departure, on the same flights, and matched on language where we can.',
-    changes: [
-      'One person across airports, instead of a new handover at each one',
-      'Checked before the match: ID, criminal record and Indian police clearance',
-      'A companion, not a caregiver',
+    lines: [
+      { icon: 'plane', text: 'On the same flights' },
+      { icon: 'shield', text: 'ID and criminal record checked first' },
+      { icon: 'companion', text: 'A companion, not a caregiver' },
     ],
-    quote: { text: '“I would not want somebody treating me like a patient.”', by: 'Meena J.' },
     prices: [
-      { value: 'C$225–325', label: 'Boardwith, whole route.', tag: { kind: 'assumption', qualifier: 'price untested' } },
-      { prefix: 'from', value: 'C$282.50', label: 'Toronto Pearson meet-and-assist, one airport only.', tag: { kind: 'evidence', qualifier: 'ALLWAYS website' } },
+      { value: 'C$225–325', label: 'Boardwith, the whole trip', tag: { kind: 'assumption' } },
+      { prefix: 'from', value: 'C$282.50', label: 'An escort for one airport, Toronto' },
     ],
     sources: [
       'ALLWAYS Toronto meet-and-assist (arriving), company website, September 2026.',
@@ -136,8 +135,10 @@ export const slides = [
     notes: {
       five: '“Boardwith gives the family one companion for that trip, checked for ID and criminal record before we match them, on the same flights, and ideally speaking the parent’s language. A companion, not a caregiver. Meena told us, ‘I would not want somebody treating me like a patient.’ We charge 225 to 325 dollars for the whole route. At Toronto Pearson, an escort for that one airport starts at 282.”',
       twenty: [
+        'Said, not shown: known to the family before departure; matched on language where we can; Meena’s “I would not want somebody treating me like a patient.”',
         'Before and after, using the two illustrations: handed over airport by airport, versus one person across airports.',
         'Language: “English only would not help me much when I am nervous.” Meena would prefer a woman who speaks Marathi or Hindi. Language and gender preferences narrow the pool, and the pilot measures by how much.',
+        'The family knows the companion before departure.',
         'Value in the buyer’s units: hours out of contact removed, a visit not delayed, no second ticket.',
         'Family updates while the parent is offline were requested (Shashikant; Sunil and Kavita D.) and are planned, not designed.',
       ],
@@ -150,14 +151,14 @@ export const slides = [
     number: 4,
     title: 'Underlying magic',
     layout: 'L3',
-    headline: 'Every companion is checked before we match them to your parent’s flights.',
-    sub: 'Whole routes rarely match, but all 5 interview routes passed through Toronto or Montreal, so we match those legs.',
-    subTag: { kind: 'evidence', qualifier: 'interview routes, n = 5' },
+    headline: 'Checked before the match. Matched on the flights.',
+    sub: 'All 5 routes we heard pass through Toronto or Montreal, so we match there.',
+    stepsTag: 'Concept screens',
     steps: [
-      { title: 'Family adds the flights' },
-      { title: 'Companion is checked' },
-      { title: 'Matched on the same flights' },
-      { title: 'Together on the day' },
+      { title: 'Add the flights' },
+      { title: 'Check the companion' },
+      { title: 'Match on the flights' },
+      { title: 'Travel together' },
     ],
     sources: [
       'Stripe Identity (C$2.00 per ID-and-selfie check), Certn (C$24.99–29.99), Consulate General of India, Toronto (police clearance fees).',
@@ -182,34 +183,19 @@ export const slides = [
     number: 5,
     title: 'Business model',
     layout: 'L4',
-    headline: 'Families pay once per journey. We keep C$75, about C$30 after checks and card fees.',
-    sub: 'The adult child in Canada pays by card after booking the ticket. Price rises with the legs the companion covers.',
+    headline: 'We keep C$75 a journey, about C$30 after costs.',
     priceBar: {
       total: 325,
-      caption: 'A route with two or more connections: the family pays C$325.',
+      caption: 'A two-connection trip: the family pays C$325',
       segments: [
-        { key: 'companion', label: 'Companion earns', value: 250, display: 'C$250', tone: 'companion' },
-        { key: 'checks', label: 'Checks share', value: 36.5, display: 'C$36.50', tone: 'cost', note: 'about C$73 per companion, spread over two trips a year' },
-        { key: 'card', label: 'Card fees', value: 9.73, display: 'C$9.73', tone: 'cost', note: '2.9% + C$0.30' },
-        { key: 'kept', label: 'Boardwith keeps', value: 28.77, display: '≈ C$29', tone: 'boardwith' },
+        { key: 'companion', label: 'Companion', value: 250, display: 'C$250', tone: 'companion' },
+        { key: 'checks', label: 'Checks', value: 36.5, display: 'C$36.50', tone: 'cost' },
+        { key: 'card', label: 'Card fees', value: 9.73, display: 'C$9.73', tone: 'cost' },
+        { key: 'kept', label: 'Boardwith', value: 28.77, display: '≈ C$29', tone: 'boardwith' },
       ],
     },
-    tiers: {
-      head: ['Route', 'Family pays', 'Companion earns', 'Boardwith keeps after costs'],
-      rows: [
-        ['Direct', 'C$225', 'C$150', '≈ C$32'],
-        ['One connection', 'C$275', 'C$200', '≈ C$30'],
-        ['Two or more', 'C$325', 'C$250', '≈ C$29'],
-      ],
-    },
-    metric: {
-      value: '≈ C$30',
-      label: 'per journey at 2 trips a year per companion, rising to **≈ C$47–50** at 4.',
-      tag: { kind: 'assumption' },
-    },
-    quote: { text: 'C$400 one way, “if I really trusted the person.”', by: 'Shashikant P.' },
-    footnote: 'Not yet counted: insurance (unpriced) and support time. Each parent visit is two one-way journeys, to Canada and home.',
-    footnoteTag: { kind: 'assumption' },
+    metric: { value: '≈ C$47–50', label: 'if companions fly 4 times a year', tag: { kind: 'assumption' } },
+    caption: 'Before insurance, not yet quoted.',
     sources: [
       'Stripe pricing (card fees). Check costs: Stripe Identity, Certn, Consulate of India. Prices: Boardwith plan, untested.',
     ],
@@ -217,6 +203,7 @@ export const slides = [
     notes: {
       five: '“The adult child pays us once per journey, by card. On a route with two connections, the family pays 325 dollars, the companion earns 250, and we keep 75. After card fees and checks, that’s about 30 dollars. If companions fly four times a year instead of two, it’s about 47. Shashikant would pay 400 ‘if I really trusted the person.’ Trust, not hours, sets the price.”',
       twenty: [
+        'Said, not shown: the adult child pays by card after booking the ticket, and the price rises with the legs the companion covers. Tiers (backup A3): direct C$225, companion C$150, ≈ C$32 kept; one connection C$275, C$200, ≈ C$30; two or more C$325, C$250, ≈ C$29. Checks are about C$73 per companion over two trips a year; card fees are 2.9% + C$0.30. Shashikant: C$400 one way, “if I really trusted the person.” Each parent visit is two one-way journeys, to Canada and home.',
         'Why per journey, not a subscription: a parent visits perhaps once a year (assumption).',
         'Why price by legs: the companion stays for all of them.',
         'Price signals: buyers offered C$150–400; Shashikant said C$700–800 is too much and he’d trust an offer under C$100 less. Nikhil offered C$150 for a full journey. These are stated, not paid.',
@@ -231,30 +218,17 @@ export const slides = [
     number: 6,
     title: 'Go-to-market plan',
     layout: 'L3',
-    headline: 'One community supplies both sides: families with visiting parents, and students flying home.',
-    sub: 'First trips in the December 2026 break, from Fredericton.',
+    headline: 'One community supplies both sides.',
     loop: {
-      families: { title: 'Families', text: 'Families of UNB Fredericton’s 454 Indian students, and Fredericton’s Indian community' },
-      students: { title: 'Students flying home', text: 'The December break; the first companions' },
-      match: { title: 'Boardwith match', text: 'Checked, same flights' },
-      channels: [
-        'Fredericton Association of India',
-        'UNB Graduate Students’ Association',
-        'the groups behind 401 survey responses',
-        'referrals from interviews',
-        'Fredericton airport',
-      ],
-      conversion: 'A sign-up form captures route, dates, airline and language, so overlap is counted before any trip is promised; then a refundable deposit at list price through a Stripe payment link.',
-      arrows: {
-        repeat: 'Parents visit again and fly home (two journeys a visit)',
-        refer: 'Families refer families',
-        escort: 'Students who flew once can escort on later trips home',
-      },
+      families: { title: 'Families with visiting parents' },
+      students: { title: 'Students flying home' },
+      match: { title: 'Boardwith match' },
+      channels: ['Fredericton Association of India', 'UNB students', 'Referrals'],
+      arrow: 'Repeat visits and referrals',
     },
     metrics: [
-      { value: '1', label: 'companion signed up.', tag: { kind: 'evidence', qualifier: '28 Sept 2026' } },
-      { name: 'Fredericton Association of India', label: 'has offered to help find and onboard our first families.', tag: { kind: 'evidence', qualifier: 'founder’s conversation' } },
-      { value: 'C$50–100', label: 'outreach cash per pilot trip, no paid ads.', tag: { kind: 'assumption', qualifier: 'C$500–1,000 of the MVP, infrastructure and outreach line ÷ 10 trips; excludes founder time' } },
+      { value: '1', label: 'companion signed up' },
+      { value: '0', label: 'paid ads' },
     ],
     sources: [
       'UNB Fall 2025 enrolment summary. Survey, April–May 2026. Founder’s conversations, September 2026.',
@@ -263,6 +237,7 @@ export const slides = [
     notes: {
       five: '“We start in Fredericton, where one community supplies both sides: families whose parents visit, and students flying home in December who can be companions. The Fredericton Association of India has offered to help us find and onboard our first families, and our first companion has signed up. Families pay a refundable deposit at list price, so we learn who really pays. No paid ads.”',
       twenty: [
+        'Said, not shown: families of UNB Fredericton’s 454 Indian students and the city’s Indian community; the Fredericton Association of India has offered to help find and onboard our first families; channels also include the UNB Graduate Students’ Association, the groups behind the 401 survey responses and Fredericton airport; a refundable deposit at list price through a Stripe payment link; C$50–100 of outreach per pilot trip (C$500–1,000 of the MVP, infrastructure and outreach line ÷ 10 trips, excluding founder time).',
         'Beachhead: UNB Fredericton had 454 Indian students in Fall 2025 (409 undergraduate, 45 graduate).',
         'Channels, in order: the Association, the GSA, the groups behind the 401 survey responses, referrals from interviews (including an introduction in Moncton), Fredericton airport.',
         'Supply: Neel, a student, has escorted a family friend’s mother unpaid and would escort a stranger for about C$250 with checks paid by Boardwith. We’ll poll GSA students flying home in December for route, price and willingness to do checks.',
@@ -278,25 +253,21 @@ export const slides = [
     number: 7,
     title: 'Competitive analysis',
     layout: 'L3',
-    headline: 'Today, trusted help for the whole trip means buying a second ticket.',
-    sub: 'Help is either checked for one airport, or unchecked for the whole route.',
+    headline: 'Today, trusted help for the whole trip costs a second ticket.',
     axes: {
-      x: { title: 'Stays for', from: 'one airport', to: 'the whole route' },
-      y: { title: 'Who’s with them', from: 'unverified', to: 'checked or trusted' },
+      x: { from: 'One airport', to: 'The whole trip' },
+      y: { from: 'Unchecked', to: 'Checked' },
     },
-    // x, y in 0–1 (x: one airport → whole route; y: unverified → checked).
-    // Heights are set so the 32px labels never collide.
+    // x, y in 0–1 (x: one airport → whole trip; y: unchecked → checked)
     options: [
-      { name: 'Airline special assistance', text: 'Free. Handed over airport by airport.', x: 0.05, y: 0.99 },
-      { name: 'Airport meet-and-assist (ALLWAYS, Marhaba)', text: 'From C$282.50 at Toronto; US$55.75–92.92 at Dubai. One airport.', x: 0.05, y: 0.744 },
-      { name: 'A family member flying along', text: 'A second ticket plus time off.', x: 0.95, y: 0.99, align: 'right' },
-      { name: 'MatchMyFlight', text: 'Companions charge mostly US$25–75. Checks phone, email and ticket.', x: 0.95, y: 0.553, align: 'right' },
-      { name: 'TravelSakha, Facebook and WhatsApp groups', text: 'Free. Email only.', x: 0.95, y: 0.231, align: 'right' },
-      { name: 'A kind stranger', text: 'Luck.', x: 0.05, y: 0.229 },
+      { name: 'Airline assistance, free', x: 0.06, y: 0.92 },
+      { name: 'Airport escort, from C$282.50', x: 0.06, y: 0.72 },
+      { name: 'Family flies along, a second ticket', x: 0.94, y: 0.92, align: 'right' },
+      { name: 'MatchMyFlight, US$25–75', x: 0.94, y: 0.5, align: 'right' },
+      { name: 'Community groups, free', x: 0.94, y: 0.12, align: 'right' },
+      { name: 'A kind stranger, luck', x: 0.06, y: 0.12 },
     ],
-    boardwith: { name: 'Boardwith', text: 'C$225–325. Checked and continuous. Not yet proven.', x: 0.95, y: 0.813 },
-    quote: { text: '“No one person knew her whole journey.”', by: 'Shashikant P., on airline assistance' },
-    edge: 'Checks before the match, and one person across airports.',
+    boardwith: { name: 'Boardwith, C$225–325', x: 0.94, y: 0.74 },
     sources: [
       'Company websites reviewed September 2026: MatchMyFlight, TravelSakha, ALLWAYS, Marhaba.',
       'Interviews, September 2026.',
@@ -305,6 +276,7 @@ export const slides = [
     notes: {
       five: '“Today, trusted help for the whole trip means buying a second ticket. Airline assistance is free but hands parents over airport by airport. Toronto’s meet-and-assist covers one airport. MatchMyFlight covers the route cheaply, but checks only phone, email and ticket. We’re checked and continuous. We’re not proven yet, and that’s what the pilot is for.”',
       twenty: [
+        'Said, not shown: airline assistance is handed over airport by airport; meet-and-assist covers one airport (US$55.75–92.92 at Dubai); MatchMyFlight checks only phone, email and ticket; TravelSakha and the groups check email only. Shashikant, on airline assistance: “No one person knew her whole journey.” Our edge: checks before the match, and one person across airports.',
         'Give each competitor its due. MatchMyFlight has a head start with our exact customers, and already sells a US$14.99 add-on with checkpoint guidance and family updates. Airline assistance is free and families trust it. Meet-and-assist staff are trained and have airport access.',
         'Why families switch: trust at the connection, one person across airports, and a price near one airport’s escort.',
         'Never say we have no competition. The real incumbent is a kind stranger and luck.',
@@ -318,8 +290,8 @@ export const slides = [
     number: 8,
     title: 'Management team',
     layout: 'L4',
-    headline: 'A founder who built identity verification, and lived this problem as the buyer.',
-    bottomLine: 'Working with Energia Ventures (incubator), the JHSC Ventures Shadow Institute, and Dr. Kenneth Kent (UNB), academic supervisor on our submitted Mitacs application. Next to add: an insurance broker and legal counsel, both budgeted.',
+    headline: 'The founder built identity checks, and lived this problem.',
+    caption: 'At Energia Ventures. Mitacs application submitted with Dr. Kenneth Kent, UNB.',
     sources: ['Team members’ professional histories. Mitacs application, submitted.'],
     timing: { five: 25, twenty: 90 },
     notes: {
@@ -341,23 +313,16 @@ export const slides = [
     number: 9,
     title: 'Financial projections and key metrics',
     layout: 'L3',
-    headline: 'Year 3 needs 2% of solo parent journeys, and about 880 checked companions.',
-    sub: 'An illustrative scenario, not a forecast. Every number here is an assumption the pilot will test.',
+    headline: 'Year 3 needs 2% of the market and about 880 checked companions.',
+    sub: 'Illustrative, not a forecast.',
+    subTag: { kind: 'projection' },
     years: [
-      { year: 'Year 1', journeys: 60, display: '60', where: 'Fredericton', revenue: 'C$4,500 revenue', companions: '30 companions' },
-      { year: 'Year 2', journeys: 440, display: '440', where: 'Fredericton + 4 Atlantic Canada cities', revenue: 'C$33,000 revenue', companions: '220 companions' },
-      { year: 'Year 3', journeys: 1760, display: '1,760', where: '+ Toronto and Montreal families', revenue: 'C$132,000 revenue', companions: '880 companions' },
+      { year: 'Year 1', journeys: 60, display: '60', where: 'Year 1, Fredericton', revenue: 'C$4,500' },
+      { year: 'Year 2', journeys: 440, display: '440', where: 'Year 2, + Atlantic Canada', revenue: 'C$33,000' },
+      { year: 'Year 3', journeys: 1760, display: '1,760', where: 'Year 3, + Toronto and Montreal', revenue: 'C$132,000' },
     ],
-    chartTitle: 'One-way journeys per year',
-    chartNote: 'Revenue = C$75 kept per journey. Year 1 starts with the December 2026 pilot.',
-    decideTitle: 'Three numbers decide it',
-    decide: [
-      { title: 'Paid conversion.', text: 'Do families pay C$225–325?', today: 'Today: 0 paid' },
-      { title: 'Match rate.', text: 'Full route or arrival legs?', today: 'Today: 1 full-route overlap in 5 interview routes' },
-      { title: 'Trips per companion a year.', text: '2 gives ≈ C$30 a journey; 4 gives ≈ C$47–50.' },
-    ],
-    footnote: 'Contribution is about C$30 a journey at 2 trips per companion. Operating costs (salaries, insurance, support) aren’t modelled until the pilot prices them.',
-    footnoteTag: { kind: 'projection' },
+    decideTitle: 'What decides it',
+    decide: ['Do families pay?', 'Do routes match?', 'Do companions fly 4 times a year?'],
     sources: [
       'Market estimate from Week 2 (about 88,000 serviceable journeys). Unit economics from Week 3. Growth path: Boardwith assumption.',
     ],
@@ -365,6 +330,7 @@ export const slides = [
     notes: {
       five: '“This is an illustrative plan, not a forecast. Sixty journeys in Fredericton in year one, 440 across Atlantic Canada in year two, and 1,760 in year three. That’s 2% of the journeys parents make alone, and it takes about 880 checked companions. Three numbers decide it: do families pay, do routes match, and do companions fly more than twice a year.”',
       twenty: [
+        'Said, not shown: revenue is C$75 kept per journey; contribution is about C$30 a journey at 2 trips per companion; salaries, insurance and support aren’t modelled yet. Today’s evidence: 0 paid; 1 full-route overlap in 5 interview routes; 2 trips a year gives ≈ C$30 a journey, 4 gives ≈ C$47–50. Companions needed: 30, 220, 880.',
         'Walk the bottom-up logic from backup **A3**: a third of Fredericton’s ~180 journeys in year one; Fredericton plus four Atlantic cities in year two; Toronto and Montreal families in year three, where matching gets easier because more people fly the same routes.',
         'Say what’s not modelled: team salaries, insurance, support. Contribution at C$30 a journey won’t carry a team; the model only works at scale if companions fly more often, connection-only help adds volume, and more corridors open.',
         'Pilot trips lose money on purpose (about −C$80 each, because 20 companions are checked for 10 trips).',
@@ -379,36 +345,26 @@ export const slides = [
     title: 'Current status, timeline, use of funds',
     layout: 'L1',
     theme: 'teal',
-    headline: 'C$30,000 funds six months to run our first 10 trips and learn whether families pay.',
+    headline: 'C$30,000 to run our first 10 trips.',
     today: {
       title: 'Today',
-      tag: { kind: 'evidence', qualifier: '28 Sept 2026' },
-      lines: [
-        '0 paid trips, C$0 revenue',
-        '401 surveyed, 6 interviewed',
-        '1 companion signed up',
-        'Fredericton Association of India ready to help',
-        'Mitacs application submitted',
-      ],
+      lines: ['0 paid trips yet', '401 surveyed, 6 interviewed', '1 companion signed up'],
     },
     next: {
-      title: 'Next six months',
-      tag: { kind: 'plan' },
+      title: 'Next',
       steps: [
-        { when: 'October', what: 'sign-ups; insurance and legal quotes' },
-        { when: 'November', what: 'deposits; companion checks' },
-        { when: 'December break', what: 'first trips, with airline assistance as backup' },
-        { when: 'Month six', what: '10 trips done; results reported' },
+        { when: 'November', what: 'deposits and checks' },
+        { when: 'December', what: 'first trips' },
+        { when: 'Month six', what: 'results' },
       ],
     },
     ask: {
       title: 'The ask',
       value: 'C$30,000',
-      instrument: 'Pre-seed SAFE (post-money), C$1M valuation cap, 20% discount, C$10,000 minimum',
-      fundsLabel: 'Use of funds, C$29,960',
+      instrument: 'Pre-seed SAFE, C$1M cap',
       funds: [
-        { label: 'Mitacs contribution', value: 7500, display: 'C$7,500' },
-        { label: 'Insurance and legal', value: 8000, display: 'C$8,000', tag: { kind: 'estimate', text: 'Estimate until quoted' } },
+        { label: 'Mitacs', value: 7500, display: 'C$7,500' },
+        { label: 'Insurance and legal', value: 8000, display: 'C$8,000' },
         { label: 'Checks and refunds', value: 2460, display: 'C$2,460' },
         { label: 'MVP, infrastructure and outreach', value: 12000, display: 'C$12,000' },
       ],
@@ -419,12 +375,13 @@ export const slides = [
     notes: {
       five: '“Today we have 401 survey responses, six interviews, one companion and a community association ready to help, and zero paid trips. We’re raising 30,000 dollars on a SAFE to change that. It covers six months: our Mitacs contribution, insurance, legal terms, companion checks, building the app, and reaching our first families. No paid trip runs before insurance and signed terms. Ten trips will show us the match rate, the price families accept, what we make per trip, and whether every trip was safe. Every parent’s first flight alone should have someone checked beside them. Thank you.”',
       twenty: [
+        'Said, not shown: 20% discount and C$10,000 minimum cheque; the Fredericton Association of India is ready to help; Mitacs application submitted (the C$7,500 contribution unlocks a C$15,000 award if approved); October: sign-ups and insurance and legal quotes; the insurance and legal figure is an estimate until quoted; use of funds totals C$29,960.',
         'Said, not shown: the Mitacs contribution unlocks a C$15,000 internship award if approved; no paid trip runs before insurance and signed terms; month six reports match rate, accepted price, contribution per trip and incidents, and tests connection-only help at C$40–60.',
         'Status: registered NB corporation; Energia Ventures; Shadow Institute; Mitacs submitted; in talks with Stripe Identity, Jumio and Certn; insurance and legal not yet engaged.',
         'Timeline month by month; the December break is about ten weeks away.',
         'Use of funds line by line. Mitacs: the C$7,500 contribution unlocks a C$15,000 internship award if approved; the founder is the intern, so it funds him full-time on Boardwith.',
         'If less than C$30,000 is raised, the first trips run unpaid and the pilot still measures match rate and safety.',
-        'Terms: pre-seed SAFE (post-money), C$1M valuation cap, 20% discount.',
+        'Terms: pre-seed SAFE (post-money), C$1M valuation cap, 20% discount, C$10,000 minimum cheque.',
         'MVP, infrastructure and outreach, C$12,000: building the app and the cloud infrastructure it runs on, so the pilot moves off forms and hand-matching, plus about C$500–1,000 of printing and events to reach the first families.',
         'End on the close line, then stop talking.',
       ],

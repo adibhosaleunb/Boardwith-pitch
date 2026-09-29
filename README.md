@@ -61,19 +61,15 @@ It also lists any text under 32px, so you can confirm it's only sources, footnot
 
 Connect the repository in Netlify. `netlify.toml` sets the build command, the publish folder, the SPA redirect and the `noindex` and security headers. The deck names interviewees, so keep the URL unlisted, and turn on password protection if your plan has it.
 
+## What's on a slide
+
+Each slide shows only its "On the slide" text from the brief, about 50 words besides the headline. Everything under "Said, not shown" lives in the speaker notes: each slide's 20-minute notes open with a "Said, not shown" line holding the copy that moved off it. Sources appear in the notes panel, the `?print` PDF and phone reading mode, never on the live stage. Only estimates, assumptions, projections and concept screens carry a tag on the core slides; untagged numbers are evidence. The backups keep their evidence tags.
+
 ## Where the build departs from the brief
 
-Copy is word for word. Where a slide was too full at 1080px, I used the brief's own "cut first" rule, and the cut text stays in the notes or the data:
-
-- **Slide 3:** the Meena pull quote is cut. It's already in the 5-minute script.
-- **Slide 9:** the companion counts under the bars are cut. They are in the headline and in A3.
-
-Other departures:
-
-- **Fonts are self-hosted** through Fontsource (the brief allows this) instead of loaded from Google Fonts. There's no third-party request, and the layout check measures the real faces. Headlines and the hero use Anek Latin at 87.5% width (semi-condensed), which the brief describes as the signage look. That keeps the hero to 3 lines.
-- **Slide 4:** the phone screens are 240 × 432, not 240 × 480. At full height, the sources line would have run into the flight path.
-- **Slide 3:** the two price anchors sit side by side, not in two rows, to make room.
-- **Slide 7:** the map is 1180 × 640, not 1100 × 700, so every label fits at 32px without collisions.
-- **Slide 10:** every use-of-funds segment is white at stepped opacity. None is orange, because the brief's "one orange element per slide" rule is already met by the C$20,000.
-- **Backup A3** is the only slide with body text under 32px: its two tables and notes are set at 28px. Everything in the brief fits only at that size. To get back to 32px, move "Pilot note" and "What makes it bigger" into A3's speaker notes.
+- **Fonts are self-hosted** through Fontsource (the brief allows this) instead of loaded from Google Fonts. There's no third-party request, and the layout check measures the real faces. Headlines and the hero use Anek Latin at 87.5% width (semi-condensed), which the brief describes as the signage look.
+- **Slide 3:** the two price anchors sit side by side.
+- **Slide 10:** every use-of-funds segment is white at stepped opacity. None is orange, because the brief's "one orange element per slide" rule is already met by the C$30,000.
+- **Team photos:** the brief describes ready-made 600 × 876 files on a grey background. The repo has the earlier 480 × 702 crops instead, made from your originals with the same framing for all three. They fit the new 200 × 292 frame, because the proportions match. To use the new files, save them as `public/images/team-*.webp`; no code change is needed.
+- **Backup A3** is the only slide with body text under 32px: its two tables and notes are set at 28px. Everything in it only fits at that size.
 - **Lighthouse** scores weren't measured in this environment. Run Lighthouse on the Netlify preview to confirm the 95+ accessibility and 90+ performance targets.

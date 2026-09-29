@@ -1,7 +1,7 @@
 .loop {
   position: relative;
-  width: 1000px;
-  height: 390px;
+  width: 1080px;
+  height: 560px;
   margin: 0;
   font-family: var(--font-text);
 }
@@ -12,52 +12,44 @@
   top: 0;
 }
 
-.arc {
+.arrowLabel {
   position: absolute;
-  top: 0;
-  width: 440px;
-  font-size: 32px;
-  line-height: 1.25;
-  color: var(--bw-teal-700);
-}
-
-.arcLeft {
   left: 0;
-}
-
-.arcRight {
-  left: 560px;
+  top: 0;
+  font-size: 30px;
+  line-height: 1.2;
+  font-weight: 500;
+  color: var(--bw-teal-700);
 }
 
 .node {
   position: absolute;
-  top: 150px;
+  top: 164px;
 }
 
 .families {
   left: 0;
-  width: 440px;
+  width: 400px;
 }
 
 .match {
-  left: 470px;
-  top: 124px;
-  width: 280px;
+  left: 452px;
+  top: 150px;
+  width: 300px;
 }
 
 .students {
-  left: 760px;
-  width: 240px;
+  left: 836px;
+  width: 244px;
 }
 
 .dot {
-  display: inline-block;
-  vertical-align: -6px;
-  width: 44px;
-  height: 44px;
-  margin-right: 12px;
+  display: block;
+  width: 84px;
+  height: 84px;
   border-radius: 50%;
   background: var(--bw-teal-500);
+  margin-bottom: 16px;
 }
 
 .dotOrange {
@@ -68,48 +60,39 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 104px;
-  height: 104px;
+  width: 112px;
+  height: 112px;
   border-radius: 50%;
   border: 3px solid var(--bw-teal-700);
   background: var(--bw-paper);
   color: var(--bw-teal-700);
-  margin-bottom: 10px;
+  margin-bottom: 16px;
 }
 
 .title {
   font-size: 34px;
   line-height: 1.2;
   font-weight: 600;
-  margin-bottom: 6px;
 }
 
-.students .title {
-  text-indent: -56px;
-  padding-left: 56px;
+.channels {
+  position: absolute;
+  left: 84px;
+  top: 380px;
+  display: grid;
+  gap: 4px;
+  font-size: 30px;
+  line-height: 1.25;
+  font-weight: 500;
+  color: var(--bw-grey-600);
 }
 
-.text {
-  font-size: 32px;
-  line-height: 1.28;
-}
-
-.refer {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 8px;
-  font-size: 32px;
-  line-height: 1.2;
-  color: var(--bw-teal-700);
-}
-
-/* Reading mode: nodes stacked, arrows as text. */
+/* Reading mode: nodes stacked, the arrow as text. */
 :global(.is-reading) .loop {
   width: auto;
   height: auto;
   display: grid;
-  gap: 16px;
+  gap: 14px;
 }
 
 :global(.is-reading) .loop > * {
@@ -117,43 +100,49 @@
   width: auto;
 }
 
-:global(.is-reading) .arc {
+:global(.is-reading) .node {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+:global(.is-reading) .arrowLabel {
+  order: 5;
+  font-size: clamp(15px, 4vw, 18px);
+}
+
+:global(.is-reading) .arrowLabel::before {
+  content: '↻ ';
+}
+
+:global(.is-reading) .channels {
   order: 4;
   font-size: clamp(15px, 4vw, 18px);
 }
 
-:global(.is-reading) .arc::before {
-  content: '↻ ';
+:global(.is-reading) .channels::before {
+  content: 'Channels:';
+  font-weight: 600;
+  color: var(--bw-teal-900);
 }
 
 :global(.is-reading) .title {
   font-size: clamp(17px, 4.5vw, 20px);
 }
 
-:global(.is-reading) .text,
-:global(.is-reading) .refer {
-  font-size: clamp(16px, 4.2vw, 19px);
-}
-
 :global(.is-reading) .dot {
-  width: 16px;
-  height: 16px;
-  margin-right: 8px;
-  vertical-align: -2px;
-}
-
-:global(.is-reading) .students .title {
-  text-indent: 0;
-  padding-left: 0;
+  width: 20px;
+  height: 20px;
+  margin: 0;
 }
 
 :global(.is-reading) .ring {
-  width: 44px;
-  height: 44px;
-  margin-bottom: 6px;
+  width: 40px;
+  height: 40px;
+  margin: 0;
 }
 
 :global(.is-reading) .ring svg {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
 }

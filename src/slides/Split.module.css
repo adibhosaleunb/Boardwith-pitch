@@ -51,7 +51,7 @@
 }
 
 .prices {
-  margin: 36px 0 0;
+  margin: 88px 0 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 32px;
@@ -77,6 +77,66 @@
   font-weight: 500;
   font-stretch: 100%;
   color: var(--bw-grey-600);
+}
+
+.numbers {
+  margin-top: 88px;
+  display: grid;
+  gap: 56px;
+}
+
+.numberRow {
+  display: grid;
+  grid-template-columns: 330px 1fr;
+  column-gap: 28px;
+  align-items: center;
+}
+
+.figure {
+  font-family: var(--font-display);
+  font-size: 120px;
+  line-height: 0.9;
+  font-weight: 600;
+  font-stretch: 75%;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.unit {
+  font-size: 48px;
+  font-stretch: 87.5%;
+}
+
+.numberLabel {
+  margin: 0;
+  font-family: var(--font-text);
+  font-size: 32px;
+  line-height: 1.32;
+  text-wrap: pretty;
+}
+
+.iconLines {
+  margin-top: 64px;
+  display: grid;
+  gap: 24px;
+}
+
+.iconLines li {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.icon {
+  flex: none;
+  color: var(--bw-teal-700);
+}
+
+.priceLabel {
+  margin: 0;
+  font-family: var(--font-text);
+  font-size: 32px;
+  line-height: 1.32;
 }
 
 :global(.is-reading) .column {
@@ -116,4 +176,36 @@
 
 :global(.is-reading) .sources {
   padding-top: 24px;
+}
+
+:global(.is-reading) .numbers,
+:global(.is-reading) .iconLines {
+  margin-top: 24px;
+  gap: 16px;
+}
+
+:global(.is-reading) .numberRow {
+  grid-template-columns: 1fr;
+}
+
+:global(.is-reading) .figure {
+  font-size: clamp(44px, 12vw, 56px);
+}
+
+:global(.is-reading) .unit {
+  font-size: 0.45em;
+}
+
+:global(.is-reading) .numberLabel,
+:global(.is-reading) .priceLabel {
+  font-size: clamp(17px, 4.5vw, 20px);
+}
+
+:global(.is-reading) .icon {
+  width: 24px;
+  height: 24px;
+}
+
+:global(.is-reading) .iconLines li {
+  gap: 12px;
 }

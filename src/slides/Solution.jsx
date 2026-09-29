@@ -1,3 +1,4 @@
+import { Plane, ShieldCheck, HeartHandshake } from 'lucide-react';
 import { images } from '../data/startupData.js';
 import Slide from '../components/Slide.jsx';
 import Headline from '../components/Headline.jsx';
@@ -8,8 +9,8 @@ import { useDeck } from '../lib/DeckContext.js';
 import typo from '../styles/type.module.css';
 import s from './Split.module.css';
 
-// The pull quote is cut to the speaker notes (brief: "Cut first: the pull
-// quote") because the price anchor and sources need the room at 1080px.
+const ICONS = { plane: Plane, shield: ShieldCheck, companion: HeartHandshake };
+
 export default function Solution({ slide, active }) {
   const { mode } = useDeck();
   return (
@@ -17,13 +18,16 @@ export default function Solution({ slide, active }) {
       {mode !== 'stage' && <StoryImage image={images.solution} />}
       <div className={s.column}>
         <Headline size="short">{slide.headline}</Headline>
-        <p className={`${typo.sub} ${s.sub}`}>{slide.sub}</p>
-        <ul className={s.changes}>
-          {slide.changes.map((line) => (
-            <li key={line} className={typo.body}>
-              {line}
-            </li>
-          ))}
+        <ul className={s.iconLines}>
+          {slide.lines.map(({ icon, text }) => {
+            const Icon = ICONS[icon];
+            return (
+              <li key={text} className={typo.body}>
+                <Icon className={s.icon} size={40} strokeWidth={2} aria-hidden="true" />
+                {text}
+              </li>
+            );
+          })}
         </ul>
         <dl className={s.prices}>
           {slide.prices.map((p) => (
@@ -32,7 +36,7 @@ export default function Solution({ slide, active }) {
                 {p.prefix ? <span className={s.prefix}>{p.prefix} </span> : null}
                 {p.value}
               </dt>
-              <dd className={typo.body}>
+              <dd className={s.priceLabel}>
                 {p.label} <Tag tag={p.tag} />
               </dd>
             </div>
