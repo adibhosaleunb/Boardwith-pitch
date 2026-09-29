@@ -15,8 +15,11 @@ const WEBP = { quality: 81 };
 const find = (...names) => {
   if (!existsSync(SRC)) return null;
   const files = readdirSync(SRC);
+  // Match loosely: case, spaces and underscores vary between uploads
+  // ("Lost at the Airport@2x.png" vs "Lost_at_the_Airport@2x.png").
+  const norm = (f) => f.toLowerCase().replace(/[\s_]+/g, '');
   for (const name of names) {
-    const hit = files.find((f) => f.toLowerCase() === name.toLowerCase());
+    const hit = files.find((f) => norm(f) === norm(name));
     if (hit) return join(SRC, hit);
   }
   return null;
