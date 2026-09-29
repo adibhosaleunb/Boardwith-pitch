@@ -15,8 +15,11 @@ const WEBP = { quality: 81 };
 const find = (...names) => {
   if (!existsSync(SRC)) return null;
   const files = readdirSync(SRC);
+  // Match loosely: case, spaces and underscores vary between uploads
+  // ("Lost at the Airport@2x.png" vs "Lost_at_the_Airport@2x.png").
+  const norm = (f) => f.toLowerCase().replace(/[\s_]+/g, '');
   for (const name of names) {
-    const hit = files.find((f) => f.toLowerCase() === name.toLowerCase());
+    const hit = files.find((f) => norm(f) === norm(name));
     if (hit) return join(SRC, hit);
   }
   return null;
@@ -29,12 +32,20 @@ const jobs = [
     async run(src) {
       await sharp(src).png().toFile(join(OUT, 'logo-lockup.png'));
       // Favicon: the window icon is the left ~440px of the 2000 × 613 lockup.
+      // Cut and trim in separate passes: in one pipeline sharp may trim
+      // first, which leaves the cut outside the image ("bad extract area").
       const { width, height } = await sharp(src).metadata();
-      const iconW = Math.round((440 / 2000) * width);
-      const icon = await sharp(src).extract({ left: 0, top: 0, width: iconW, height }).trim().toBuffer();
+      const iconW = Math.min(width, Math.round((440 / 2000) * width));
+      const cut = await sharp(src).extract({ left: 0, top: 0, width: iconW, height }).png().toBuffer();
+      let icon = cut;
+      try {
+        icon = await sharp(cut).trim().png().toBuffer();
+      } catch {
+        // nothing to trim (no uniform border); keep the uncut edges
+      }
       const meta = await sharp(icon).metadata();
       const side = Math.max(meta.width, meta.height);
-      await sharp(icon)
+      const square = await sharp(icon)
         .extend({
           top: Math.floor((side - meta.height) / 2),
           bottom: Math.ceil((side - meta.height) / 2),
@@ -42,9 +53,9 @@ const jobs = [
           right: Math.ceil((side - meta.width) / 2),
           background: { r: 0, g: 0, b: 0, alpha: 0 },
         })
-        .resize(192, 192)
         .png()
-        .toFile('public/favicon.png');
+        .toBuffer();
+      await sharp(square).resize(192, 192).png().toFile('public/favicon.png');
     },
   },
   {
