@@ -2,9 +2,9 @@ import { useDeck } from '../lib/DeckContext.js';
 import styles from './CompetitorMap.module.css';
 
 const W = 1500;
-const H = 720;
+const H = 680;
 // plot area inside the figure (room for axis labels)
-const PLOT = { left: 40, right: 1480, top: 40, bottom: 650 };
+const PLOT = { left: 40, right: 1480, top: 44, bottom: 610 };
 
 const px = (x) => PLOT.left + x * (PLOT.right - PLOT.left);
 const py = (y) => PLOT.bottom - y * (PLOT.bottom - PLOT.top);
@@ -18,10 +18,12 @@ export default function CompetitorMap({ axes, options, boardwith }) {
     return (
       <ul className={styles.list}>
         {options.map((o) => (
-          <li key={o.name}>{o.name}</li>
+          <li key={o.name}>
+            {o.name}. <span className={styles.listText}>{o.text}.</span>
+          </li>
         ))}
         <li className={styles.listBw}>
-          <strong>{boardwith.name}</strong>
+          <strong>{boardwith.name}</strong> <span className={styles.listText}>{boardwith.text}</span>
         </li>
       </ul>
     );
@@ -56,7 +58,7 @@ export default function CompetitorMap({ axes, options, boardwith }) {
       <DotLabel item={{ ...boardwith, align: 'right' }} boardwith />
 
       <figcaption className="sr-only">
-        Axes: {axes.x.from} to {axes.x.to}; {axes.y.from} to {axes.y.to}. {options.map((o) => o.name).join('. ')}. {boardwith.name}.
+        Axes: {axes.x.from} to {axes.x.to}; {axes.y.from} to {axes.y.to}. {options.map((o) => `${o.name}: ${o.text}`).join('. ')}. {boardwith.name}: {boardwith.text}
       </figcaption>
     </figure>
   );
@@ -64,11 +66,12 @@ export default function CompetitorMap({ axes, options, boardwith }) {
 
 function DotLabel({ item, boardwith = false }) {
   const right = item.align === 'right';
-  const top = py(item.y) - 20;
+  const top = py(item.y) - 21;
   const style = right ? { right: W - px(item.x) + 30, top } : { left: px(item.x) + 30, top };
   return (
-    <p className={`${boardwith ? styles.bwName : styles.name} ${right ? styles.alignRight : ''}`} style={style} aria-hidden="true">
-      {item.name}
-    </p>
+    <div className={`${styles.label} ${right ? styles.alignRight : ''}`} style={style} aria-hidden="true">
+      <p className={boardwith ? styles.bwName : styles.name}>{item.name}</p>
+      {item.text ? <p className={styles.text}>{item.text}</p> : null}
+    </div>
   );
 }

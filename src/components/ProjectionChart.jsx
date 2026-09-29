@@ -40,6 +40,7 @@ export default function ProjectionChart({ years, title, showCompanions = true, b
       <div className={styles.labels}>
         {years.map((y) => (
           <div key={y.year} className={styles.col}>
+            <p className={styles.year}>{y.year}</p>
             <p className={styles.where}>{y.where}</p>
             <p className={styles.meta}>{y.revenue}</p>
             {showCompanions && y.companions ? <p className={styles.meta}>{y.companions}</p> : null}

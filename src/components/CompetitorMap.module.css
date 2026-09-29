@@ -29,31 +29,42 @@
 
 .yFrom {
   left: 64px;
-  top: 604px;
+  top: 564px;
 }
 
 .xFrom {
   left: 40px;
-  top: 672px;
+  top: 632px;
 }
 
 .xTo {
   right: 16px;
-  top: 672px;
+  top: 632px;
+}
+
+.label {
+  position: absolute;
 }
 
 .name,
 .bwName {
-  position: absolute;
+  display: inline-block;
   white-space: nowrap;
   font-size: 30px;
   line-height: 1.3;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--bw-teal-900);
 }
 
 .alignRight {
   text-align: right;
+}
+
+.text {
+  white-space: nowrap;
+  font-size: 28px;
+  line-height: 1.25;
+  color: var(--bw-grey-600);
 }
 
 /* The only filled orange on the slide: Boardwith's label. */
@@ -70,6 +81,10 @@
   gap: 8px;
   font-size: clamp(16px, 4.2vw, 19px);
   line-height: 1.4;
+}
+
+.listText {
+  color: var(--bw-grey-600);
 }
 
 .listBw strong {

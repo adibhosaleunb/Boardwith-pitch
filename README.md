@@ -63,7 +63,9 @@ Connect the repository in Netlify. `netlify.toml` sets the build command, the pu
 
 ## What's on a slide
 
-Each slide shows only its "On the slide" text from the brief, about 50 words besides the headline. Everything under "Said, not shown" lives in the speaker notes: each slide's 20-minute notes open with a "Said, not shown" line holding the copy that moved off it. Sources appear in the notes panel, the `?print` PDF and phone reading mode, never on the live stage. Only estimates, assumptions, projections and concept screens carry a tag on the core slides; untagged numbers are evidence. The backups keep their evidence tags.
+Each core slide sits between the brief's full copy and its bare "On the slide" copy: a one-line headline, one sub line where it adds context, and every number with a short label that says who, where or what it means (about 70–90 words besides the headline). Quotes, footnote detail and the working behind each number stay in the speaker notes: a slide's 20-minute notes open with a "Said, not shown" line holding whatever is off the slide. Sources appear in the notes panel, the `?print` PDF and phone reading mode, never on the live stage. Only estimates, assumptions, projections and concept screens carry a tag on the core slides; untagged numbers are evidence. The backups keep their evidence tags.
+
+Illustrations: slides 2 and 3 use the airport scenes; slide 6 draws the two sides of the market as vector people in the same palette (`src/components/People.jsx`: the visiting mother with her daughter, and a student flying home); slide 5's price tiers carry small route drawings (`RouteGlyph.jsx`) showing direct, one connection and two or more.
 
 ## Where the build departs from the brief
 

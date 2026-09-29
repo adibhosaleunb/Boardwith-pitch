@@ -1,7 +1,9 @@
+/* 1100 × 620 on the canvas: arc labels on top, the two illustrated sides
+   with the match between them, their captions, then the channels line. */
 .loop {
   position: relative;
-  width: 1080px;
-  height: 560px;
+  width: 1100px;
+  height: 620px;
   margin: 0;
   font-family: var(--font-text);
 }
@@ -12,56 +14,71 @@
   top: 0;
 }
 
-.arrowLabel {
+.arc {
   position: absolute;
-  left: 0;
   top: 0;
-  font-size: 30px;
-  line-height: 1.2;
+  width: 420px;
+  font-size: 28px;
+  line-height: 1.25;
   font-weight: 500;
   color: var(--bw-teal-700);
+  text-wrap: balance;
+}
+
+.arcLeft {
+  left: 0;
+}
+
+.arcRight {
+  right: 0;
+  text-align: right;
+  color: var(--bw-teal-900);
+}
+
+.figure {
+  position: absolute;
+  top: 84px;
+}
+
+.figLeft {
+  left: 20px;
+}
+
+.figRight {
+  left: 860px;
 }
 
 .node {
   position: absolute;
-  top: 164px;
+  top: 318px;
 }
 
 .families {
   left: 0;
-  width: 400px;
+  width: 380px;
 }
 
 .match {
-  left: 452px;
-  top: 150px;
+  left: 400px;
+  top: 134px;
   width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .students {
-  left: 836px;
-  width: 244px;
-}
-
-.dot {
-  display: block;
-  width: 84px;
-  height: 84px;
-  border-radius: 50%;
-  background: var(--bw-teal-500);
-  margin-bottom: 16px;
-}
-
-.dotOrange {
-  background: var(--bw-orange-400);
+  left: 790px;
+  width: 310px;
 }
 
 .ring {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 112px;
-  height: 112px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   border: 3px solid var(--bw-teal-700);
   background: var(--bw-paper);
@@ -75,19 +92,43 @@
   font-weight: 600;
 }
 
+.text {
+  margin-top: 6px;
+  font-size: 28px;
+  line-height: 1.3;
+  color: var(--bw-grey-600);
+  text-wrap: pretty;
+}
+
 .channels {
   position: absolute;
-  left: 84px;
-  top: 380px;
-  display: grid;
-  gap: 4px;
-  font-size: 30px;
-  line-height: 1.25;
-  font-weight: 500;
+  left: 0;
+  right: 0;
+  top: 548px;
+  font-size: 28px;
+  line-height: 1.3;
   color: var(--bw-grey-600);
 }
 
-/* Reading mode: nodes stacked, the arrow as text. */
+.channelsLabel {
+  font-weight: 600;
+  color: var(--bw-teal-900);
+}
+
+.dot {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: var(--bw-teal-500);
+}
+
+.dotOrange {
+  background: var(--bw-orange-400);
+}
+
+/* Reading mode: sides stacked, the arcs as text. */
 :global(.is-reading) .loop {
   width: auto;
   height: auto;
@@ -100,46 +141,50 @@
   width: auto;
 }
 
-:global(.is-reading) .node {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+:global(.is-reading) .match {
+  align-items: flex-start;
+  text-align: left;
 }
 
-:global(.is-reading) .arrowLabel {
-  order: 5;
+:global(.is-reading) .families {
+  order: 1;
+}
+
+:global(.is-reading) .match {
+  order: 2;
+}
+
+:global(.is-reading) .students {
+  order: 3;
+}
+
+:global(.is-reading) .arc {
+  order: 4;
   font-size: clamp(15px, 4vw, 18px);
+  text-align: left;
 }
 
-:global(.is-reading) .arrowLabel::before {
+:global(.is-reading) .arc::before {
   content: '↻ ';
 }
 
 :global(.is-reading) .channels {
-  order: 4;
+  order: 6;
   font-size: clamp(15px, 4vw, 18px);
-}
-
-:global(.is-reading) .channels::before {
-  content: 'Channels:';
-  font-weight: 600;
-  color: var(--bw-teal-900);
 }
 
 :global(.is-reading) .title {
   font-size: clamp(17px, 4.5vw, 20px);
 }
 
-:global(.is-reading) .dot {
-  width: 20px;
-  height: 20px;
-  margin: 0;
+:global(.is-reading) .text {
+  font-size: clamp(15px, 4vw, 18px);
 }
 
 :global(.is-reading) .ring {
   width: 40px;
   height: 40px;
-  margin: 0;
+  margin: 0 0 6px;
 }
 
 :global(.is-reading) .ring svg {

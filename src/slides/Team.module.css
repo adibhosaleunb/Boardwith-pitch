@@ -1,9 +1,10 @@
-/* Three columns of 544px (x 120, 688, 1256), separated by whitespace. */
+/* Three columns of 544px (x 120, 688, 1256), separated by whitespace; the
+   people the team works with in one row under a hairline at the bottom. */
 .people {
   display: grid;
   grid-template-columns: repeat(3, 544px);
   column-gap: 24px;
-  margin-top: 64px;
+  margin-top: 52px;
 }
 
 .bottom {
@@ -12,7 +13,48 @@
   right: 120px;
   bottom: 96px;
   display: grid;
-  gap: 4px;
+  gap: 6px;
+  padding-top: 20px;
+  border-top: 1px solid var(--bw-grey-300);
+}
+
+.partnersTitle {
+  font-family: var(--font-text);
+  font-size: 28px;
+  line-height: 1.3;
+  font-weight: 600;
+  color: var(--bw-grey-600);
+}
+
+.partners {
+  display: grid;
+  grid-template-columns: repeat(3, 544px);
+  column-gap: 24px;
+  margin-bottom: 4px;
+  font-family: var(--font-text);
+  font-size: 28px;
+  line-height: 1.3;
+}
+
+.partners li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding-right: 24px;
+}
+
+.partnerIcon {
+  flex: none;
+  margin-top: 1px;
+  color: var(--bw-teal-700);
+}
+
+.partnerName {
+  font-weight: 600;
+}
+
+.gap {
+  color: var(--bw-grey-600);
 }
 
 :global(.is-reading) .people {
@@ -24,4 +66,19 @@
 :global(.is-reading) .bottom {
   position: static;
   margin-top: 24px;
+}
+
+:global(.is-reading) .partnersTitle,
+:global(.is-reading) .partners {
+  font-size: clamp(15px, 4.2vw, 18px);
+}
+
+:global(.is-reading) .partners {
+  grid-template-columns: 1fr;
+  row-gap: 8px;
+}
+
+:global(.is-reading) .partnerIcon {
+  width: 20px;
+  height: 20px;
 }

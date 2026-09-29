@@ -1,8 +1,12 @@
-/* Map 1500 × 720, centred under the headline; no side column. */
+/* Map 1500 × 680, centred under the headline and sub; no side column. */
+.sub {
+  margin-top: 12px;
+}
+
 .map {
   display: flex;
   justify-content: center;
-  margin-top: 40px;
+  margin-top: 28px;
 }
 
 .sources {

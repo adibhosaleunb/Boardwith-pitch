@@ -1,17 +1,20 @@
 import { ShieldCheck } from 'lucide-react';
 import { useDeck } from '../lib/DeckContext.js';
+import { FamilyFigure, StudentFigure } from './People.jsx';
 import styles from './CommunityLoop.module.css';
 
-// Two nodes feeding one centre, one curved arrow back. Families side teal,
-// companion side orange (as in the logo). Channels feed the families node.
+// Families (teal) and students (orange, as in the logo) both feed the match;
+// a dashed arrow curves back to each side for the repeat business. Channels
+// sit in one line under the loop.
 export default function CommunityLoop({ loop }) {
   const { mode } = useDeck();
-  const { families, students, match, channels, arrow } = loop;
+  const { families, students, match, arrows, channels } = loop;
+  const reading = mode === 'reading';
 
   return (
     <figure className={styles.loop}>
-      {mode !== 'reading' && (
-        <svg className={styles.svg} width="1080" height="560" viewBox="0 0 1080 560" aria-hidden="true">
+      {!reading && (
+        <svg className={styles.svg} width="1100" height="320" viewBox="0 0 1100 320" aria-hidden="true">
           <defs>
             <marker id="bw-arrow-teal" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
               <path d="M0,0 L10,5 L0,10 z" fill="var(--bw-teal-700)" />
@@ -20,21 +23,27 @@ export default function CommunityLoop({ loop }) {
               <path d="M0,0 L10,5 L0,10 z" fill="var(--bw-teal-900)" />
             </marker>
           </defs>
-          {/* feeding the centre */}
-          <line x1="104" y1="206" x2="444" y2="206" stroke="var(--bw-teal-700)" strokeWidth="3" markerEnd="url(#bw-arrow-teal)" />
-          <line x1="828" y1="206" x2="600" y2="206" stroke="var(--bw-teal-900)" strokeWidth="3" markerEnd="url(#bw-arrow-ink)" />
-          {/* the one curved arrow back */}
-          <path d="M500 136 C 420 60, 140 60, 52 148" fill="none" stroke="var(--bw-teal-700)" strokeWidth="3" strokeDasharray="12 9" markerEnd="url(#bw-arrow-teal)" />
-          {/* channels feeding the families node */}
-          <line x1="52" y1="468" x2="52" y2="360" stroke="var(--bw-teal-500)" strokeWidth="3" markerEnd="url(#bw-arrow-teal)" />
+          {/* both sides feed the match */}
+          <line x1="244" y1="194" x2="478" y2="194" stroke="var(--bw-teal-700)" strokeWidth="3" markerEnd="url(#bw-arrow-teal)" />
+          <line x1="856" y1="194" x2="622" y2="194" stroke="var(--bw-teal-900)" strokeWidth="3" markerEnd="url(#bw-arrow-ink)" />
+          {/* and each comes back */}
+          <path d="M520 134 C 450 76, 250 70, 158 100" fill="none" stroke="var(--bw-teal-700)" strokeWidth="3" strokeDasharray="12 9" markerEnd="url(#bw-arrow-teal)" />
+          <path d="M580 134 C 650 76, 850 70, 942 100" fill="none" stroke="var(--bw-teal-900)" strokeWidth="3" strokeDasharray="12 9" markerEnd="url(#bw-arrow-ink)" />
         </svg>
       )}
 
-      <p className={styles.arrowLabel}>{arrow}</p>
+      <p className={`${styles.arc} ${styles.arcLeft}`}>{arrows.families}</p>
+      <p className={`${styles.arc} ${styles.arcRight}`}>{arrows.students}</p>
+
+      {!reading && <FamilyFigure size={220} className={`${styles.figure} ${styles.figLeft}`} />}
+      {!reading && <StudentFigure size={220} className={`${styles.figure} ${styles.figRight}`} />}
 
       <div className={`${styles.node} ${styles.families}`}>
-        <span className={styles.dot} aria-hidden="true" />
-        <p className={styles.title}>{families.title}</p>
+        <p className={styles.title}>
+          {reading && <span className={styles.dot} aria-hidden="true" />}
+          {families.title}
+        </p>
+        <p className={styles.text}>{families.text}</p>
       </div>
 
       <div className={`${styles.node} ${styles.match}`}>
@@ -42,18 +51,20 @@ export default function CommunityLoop({ loop }) {
           <ShieldCheck size={52} strokeWidth={2} />
         </span>
         <p className={styles.title}>{match.title}</p>
+        <p className={styles.text}>{match.text}</p>
       </div>
 
       <div className={`${styles.node} ${styles.students}`}>
-        <span className={`${styles.dot} ${styles.dotOrange}`} aria-hidden="true" />
-        <p className={styles.title}>{students.title}</p>
+        <p className={styles.title}>
+          {reading && <span className={`${styles.dot} ${styles.dotOrange}`} aria-hidden="true" />}
+          {students.title}
+        </p>
+        <p className={styles.text}>{students.text}</p>
       </div>
 
-      <ul className={styles.channels} aria-label="Channels feeding the families node">
-        {channels.map((c) => (
-          <li key={c}>{c}</li>
-        ))}
-      </ul>
+      <p className={styles.channels}>
+        <span className={styles.channelsLabel}>Channels:</span> {channels.join(' · ')}
+      </p>
     </figure>
   );
 }

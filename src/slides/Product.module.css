@@ -8,22 +8,41 @@
   margin-top: 16px;
 }
 
-.conceptTag {
-  align-self: flex-start;
-  margin-top: 40px;
+.tagRow {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.stepsNote {
+  font-family: var(--font-text);
+  font-size: 28px;
+  line-height: 1.3;
+  color: var(--bw-grey-600);
 }
 
 .journey {
-  margin-top: 16px;
+  margin-top: 8px;
 }
 
 .sources {
   margin-top: auto;
-  padding-top: 16px;
+  padding-top: 8px;
 }
 
 :global(.is-reading) .wrap {
   height: auto;
+}
+
+:global(.is-reading) .tagRow {
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  margin-top: 16px;
+}
+
+:global(.is-reading) .stepsNote {
+  font-size: clamp(14px, 3.8vw, 17px);
 }
 
 :global(.is-reading) .journey {

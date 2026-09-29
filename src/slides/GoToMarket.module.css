@@ -1,15 +1,32 @@
+.sub {
+  margin-top: 12px;
+}
+
 .grid {
   display: grid;
-  grid-template-columns: 1092px 1fr;
+  grid-template-columns: 1100px 1fr;
   column-gap: 88px;
-  margin-top: 96px;
+  margin-top: 44px;
 }
 
 .right {
   display: grid;
-  gap: 56px;
+  gap: 40px;
   align-content: start;
-  padding-top: 150px;
+  padding-top: 84px;
+}
+
+.metricName {
+  font-family: var(--font-display);
+  font-size: 40px;
+  line-height: 1.05;
+  font-weight: 600;
+  font-stretch: 87.5%;
+}
+
+.metricLabel {
+  margin-top: 8px;
+  text-wrap: balance;
 }
 
 .sources {
@@ -26,9 +43,12 @@
 }
 
 :global(.is-reading) .right {
-  grid-template-columns: 1fr 1fr;
   gap: 16px;
   padding-top: 0;
+}
+
+:global(.is-reading) .metricName {
+  font-size: clamp(22px, 6vw, 28px);
 }
 
 :global(.is-reading) .sources {

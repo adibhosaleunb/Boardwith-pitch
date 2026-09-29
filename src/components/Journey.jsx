@@ -14,10 +14,13 @@ export default function Journey({ steps }) {
             </span>
           </div>
           <PhoneScreen index={i} />
-          <p className={styles.title}>
-            <span className="sr-only">Step {i + 1}: </span>
-            {step.title}
-          </p>
+          <div>
+            <p className={styles.title}>
+              <span className="sr-only">Step {i + 1}: </span>
+              {step.title}
+            </p>
+            {step.detail ? <p className={styles.detail}>{step.detail}</p> : null}
+          </div>
         </li>
       ))}
     </ol>

@@ -19,12 +19,15 @@ export default function Solution({ slide, active }) {
       <div className={s.column}>
         <Headline size="short">{slide.headline}</Headline>
         <ul className={s.iconLines}>
-          {slide.lines.map(({ icon, text }) => {
+          {slide.lines.map(({ icon, text, detail }) => {
             const Icon = ICONS[icon];
             return (
-              <li key={text} className={typo.body}>
+              <li key={text}>
                 <Icon className={s.icon} size={40} strokeWidth={2} aria-hidden="true" />
-                {text}
+                <div>
+                  <p className={s.lineTitle}>{text}</p>
+                  {detail ? <p className={s.lineDetail}>{detail}</p> : null}
+                </div>
               </li>
             );
           })}

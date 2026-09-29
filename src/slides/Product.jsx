@@ -12,7 +12,10 @@ export default function Product({ slide, active }) {
       <div className={s.wrap}>
         <Headline>{slide.headline}</Headline>
         <p className={`${typo.sub} ${s.sub}`}>{slide.sub}</p>
-        <EvidenceTag kind="concept" text={slide.stepsTag} className={s.conceptTag} />
+        <div className={s.tagRow}>
+          <EvidenceTag kind="concept" text={slide.stepsTag} />
+          {slide.stepsNote ? <p className={s.stepsNote}>{slide.stepsNote}</p> : null}
+        </div>
         <div className={s.journey}>
           <Journey steps={slide.steps} />
         </div>

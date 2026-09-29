@@ -21,11 +21,20 @@
   color: var(--bw-teal-700);
 }
 
-.line {
-  margin-top: 14px;
-  font-size: 32px;
+.lines {
+  margin-top: 12px;
+  display: grid;
+  gap: 6px;
+  font-size: 30px;
   line-height: 1.3;
+}
+
+.lines li {
   text-wrap: pretty;
+}
+
+.lines li + li {
+  color: var(--bw-grey-600);
 }
 
 /* Reading mode: photo 120px wide beside the name. */
@@ -45,10 +54,10 @@
 }
 
 :global(.is-reading) .role,
-:global(.is-reading) .line {
+:global(.is-reading) .lines {
   font-size: clamp(15px, 4.2vw, 18px);
 }
 
-:global(.is-reading) .line {
+:global(.is-reading) .lines {
   margin-top: 8px;
 }
