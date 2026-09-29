@@ -33,8 +33,10 @@ export default function Team({ slide, active }) {
             );
           })}
         </ul>
-        <p className={`${typo.caption} ${s.gap}`}>{slide.gap}</p>
-        <Sources items={slide.sources} />
+        <div className={s.foot}>
+          <p className={`${typo.caption} ${s.gap}`}>{slide.gap}</p>
+          <Sources items={slide.sources} />
+        </div>
       </div>
     </Slide>
   );

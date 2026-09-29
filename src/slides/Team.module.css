@@ -4,7 +4,7 @@
   display: grid;
   grid-template-columns: repeat(3, 544px);
   column-gap: 24px;
-  margin-top: 52px;
+  margin-top: 40px;
 }
 
 .bottom {
@@ -14,8 +14,14 @@
   bottom: 96px;
   display: grid;
   gap: 6px;
-  padding-top: 20px;
+  padding-top: 18px;
   border-top: 1px solid var(--bw-grey-300);
+}
+
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 40px;
 }
 
 .partnersTitle {
@@ -66,6 +72,10 @@
 :global(.is-reading) .bottom {
   position: static;
   margin-top: 24px;
+}
+
+:global(.is-reading) .foot {
+  display: grid;
 }
 
 :global(.is-reading) .partnersTitle,

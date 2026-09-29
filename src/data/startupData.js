@@ -24,14 +24,14 @@ export const team = [
     role: 'Founder & CEO',
     initials: 'AB',
     photo: '/images/team-aditya.webp',
-    lines: ['Identity verification at Copart, 2021–2025', 'Cloud security at Skyhigh; 6+ years in production software'],
+    lines: ['MSCS student at UNB; identity verification at Copart, 2021–2025', 'Cloud security at Skyhigh; 6+ years in production software'],
   },
   {
     name: 'Adarsh Shaw',
     role: 'CTO',
     initials: 'AS',
     photo: '/images/team-adarsh.webp',
-    lines: ['Software architect at Tavant; Google Cloud certified', 'Built the AI engine behind NutriLens'],
+    lines: ['BTech; software architect at Tavant; Google Cloud certified', 'Built the AI engine behind NutriLens'],
   },
   {
     name: 'Shivani Shinde',
@@ -333,7 +333,7 @@ export const slides = [
       twenty: [
         'Scars: the founder booked and paid for his mother’s trip and searched Facebook and WhatsApp groups for someone on her route, and found no one.',
         'Skills: identity verification is Boardwith’s first trust check; the founder has done it in production.',
-        'Adarsh Shaw, CTO: software architect and lead engineer at Tavant; previously designed production data pipelines at Infosys; Google Cloud certified. Built the core AI engine behind NutriLens (Google Agentic AI Hackathon 2025), shipping LLM features end to end in a React/Node app.',
+        'Adarsh Shaw, CTO: BTech; software architect and lead engineer at Tavant; previously designed production data pipelines at Infosys; Google Cloud certified. Built the core AI engine behind NutriLens (Google Agentic AI Hackathon 2025), shipping LLM features end to end in a React/Node app.',
         'Shivani Shinde, HR & Operations: MBA in HR and Finance; former manager at a restaurant chain, leading frontline teams and customer service. Leads companion recruitment, onboarding and background checks, plus traveller and companion support.',
         'Aditya’s longer bio: Senior Software Engineer at Copart India Technology Centre (2021–2025), working on identity verification for user registration; cloud security auditing for AWS and Azure at Skyhigh Security; Master of Computer Science student at UNB.',
         'The gap: legal drafting and insurance. Shivani now covers companion operations; insurance and legal counsel are budgeted, and Energia Ventures mentors and Dr. Kent partly cover the rest.',
