@@ -23,6 +23,10 @@
   margin-top: 2px;
 }
 
+.contact .confidential {
+  margin-top: 20px;
+}
+
 .window {
   position: absolute;
   right: 120px; /* right edge at x 1800 */

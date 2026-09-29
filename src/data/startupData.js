@@ -7,11 +7,39 @@
 export const company = {
   name: 'Boardwith',
   oneLiner: 'A checked companion on the same flights, for parents flying alone to Canada.',
-  founder: { name: 'Aditya Bhosale', title: 'Founder & CEO', titleInput: '[FOUNDER INPUT: confirm title]' },
+  founder: { name: 'Aditya Bhosale', title: 'Founder & CEO' },
+  stage: 'Pre-seed',
+  confidential: true,
+  confidentialLine: 'Pre-seed. Confidential.',
+  printLine: 'Boardwith. Pre-seed. Confidential.',
   email: 'adityabhosale@boardwith.com',
   website: 'boardwith.com',
-  phone: '[FOUNDER INPUT: phone number, optional]',
 };
+
+// Slide 8. Photos are cropped by scripts/prepare-images.mjs (brief, 12.4).
+export const team = [
+  {
+    name: 'Aditya Bhosale',
+    role: 'Founder & CEO',
+    initials: 'AB',
+    photo: '/images/team-aditya.webp',
+    lines: ['Identity verification at Copart, 2021–2025', 'Cloud security at Skyhigh; 6+ years in production software'],
+  },
+  {
+    name: 'Adarsh Shaw',
+    role: 'CTO',
+    initials: 'AS',
+    photo: '/images/team-adarsh.webp',
+    lines: ['Software architect and lead engineer at Tavant; Google Cloud certified', 'Built the AI engine behind NutriLens (Google Agentic AI Hackathon 2025)'],
+  },
+  {
+    name: 'Shivani Shinde',
+    role: 'HR & Operations',
+    initials: 'SS',
+    photo: '/images/team-shivani.webp',
+    lines: ['MBA in HR and Finance; managed frontline teams at a restaurant chain', 'Leads companion recruitment, checks and support'],
+  },
+];
 
 export const images = {
   lockup: { src: '/images/logo-lockup.png', alt: 'Boardwith', width: 2000, height: 613 },
@@ -69,9 +97,9 @@ export const slides = [
       'Interviews, September 2026 (6 conversations, in person and by phone).',
       'Survey of 401 respondents, April–May 2026.',
     ],
-    timing: { five: 45, twenty: 180 },
+    timing: { five: 50, twenty: 180 },
     notes: {
-      five: '“When my mother first flew home to India alone, I watched her through the glass at Fredericton airport, struggling with the WiFi. I couldn’t reach her. In Dubai, a stranger walked her to her connection. This September I interviewed six families and travellers. Shashikant’s mother missed her Toronto connection; he couldn’t reach her for 45 minutes. Meena, 67, was left alone after Toronto immigration for almost half an hour, despite a wheelchair booking. Once they land, no one is responsible for them. And it isn’t age: it’s being alone, new to flying and short on English. In our survey of 401 people, 59% found trustworthy help hard to find.”',
+      five: '“When my mother first flew home to India alone, I watched her through the glass at Fredericton airport. I couldn’t reach her. In Dubai, a stranger walked her to her connection. This September I interviewed six families and travellers. Shashikant’s mother missed her Toronto connection; he couldn’t reach her for 45 minutes. Meena, 67, was left alone after Toronto immigration for almost half an hour, despite a wheelchair booking. Once they land, no one is responsible for them. And it isn’t age: it’s being alone, new to flying and short on English. In our survey of 401 people, 59% found trustworthy help hard to find.”',
       twenty: [
         'Tell the mother story in full: four flights, three connections, Fredericton–Toronto–Dubai–Delhi–Indore; the stranger in Dubai.',
         'What families already spend: wheelchair assistance booked for parents who can walk (four or five families the founder knows); C$282.50 for one airport’s escort at Toronto; a second ticket plus time off; Shashikant delayed his mother’s next visit three months; Nikhil paid C$70 more for a longer connection.',
@@ -104,7 +132,7 @@ export const slides = [
       'ALLWAYS Toronto meet-and-assist (arriving), company website, September 2026.',
       'Interviews, September 2026.',
     ],
-    timing: { five: 35, twenty: 120 },
+    timing: { five: 30, twenty: 120 },
     notes: {
       five: '“Boardwith gives the family one companion for that trip, checked for ID and criminal record before we match them, on the same flights, and ideally speaking the parent’s language. A companion, not a caregiver. Meena told us, ‘I would not want somebody treating me like a patient.’ We charge 225 to 325 dollars for the whole route. At Toronto Pearson, an escort for that one airport starts at 282.”',
       twenty: [
@@ -135,7 +163,7 @@ export const slides = [
       'Stripe Identity (C$2.00 per ID-and-selfie check), Certn (C$24.99–29.99), Consulate General of India, Toronto (police clearance fees).',
       'Status: in talks with Stripe Identity, Jumio and Certn.',
     ],
-    timing: { five: 35, twenty: 150 },
+    timing: { five: 30, twenty: 150 },
     notes: {
       five: '“How it works. The family books the ticket, then gives us the flights and the parent’s language. Every companion passes ID, criminal record and Indian police clearance checks before any match. Then we match on the flights. Whole routes rarely overlap, but all five routes we heard passed through Toronto or Montreal, exactly where parents struggle. So when a whole route won’t match, we match those legs.”',
       twenty: [
@@ -226,7 +254,7 @@ export const slides = [
     metrics: [
       { value: '1', label: 'companion signed up.', tag: { kind: 'evidence', qualifier: '28 Sept 2026' } },
       { name: 'Fredericton Association of India', label: 'has offered to help find and onboard our first families.', tag: { kind: 'evidence', qualifier: 'founder’s conversation' } },
-      { value: 'C$50–100', label: 'outreach cash per pilot trip, no paid ads.', tag: { kind: 'assumption', qualifier: 'C$500–1,000 budget ÷ 10 trips; excludes founder time' } },
+      { value: 'C$50–100', label: 'outreach cash per pilot trip, no paid ads.', tag: { kind: 'assumption', qualifier: 'C$500–1,000 of the MVP, infrastructure and outreach line ÷ 10 trips; excludes founder time' } },
     ],
     sources: [
       'UNB Fall 2025 enrolment summary. Survey, April–May 2026. Founder’s conversations, September 2026.',
@@ -291,51 +319,18 @@ export const slides = [
     title: 'Management team',
     layout: 'L4',
     headline: 'A founder who built identity verification, and lived this problem as the buyer.',
-    people: [
-      {
-        name: 'Aditya Bhosale',
-        role: 'Founder & CEO',
-        roleInput: '[FOUNDER INPUT: confirm title]',
-        lines: [
-          'Worked on identity verification for user registration at Copart India Technology Centre (Senior Software Engineer, 2021–2025)',
-          'Worked on a cloud security auditing platform for AWS and Azure at Skyhigh Security',
-          '6+ years of production software; Master of Computer Science student at UNB',
-          'Booked his mother’s first solo trip home, and watched her struggle through the glass',
-        ],
-      },
-      {
-        name: 'Adarsh Shaw',
-        role: 'CTO',
-        lines: [
-          '[FOUNDER INPUT: most relevant experience, one line]',
-          '[FOUNDER INPUT: second line: what he has built that matters here]',
-        ],
-      },
-      {
-        name: 'Shivani Shinde',
-        role: 'HR & Operations',
-        lines: [
-          '[FOUNDER INPUT: most relevant experience, one line]',
-          '[FOUNDER INPUT: confirm scope, e.g. companion recruitment, onboarding and checks]',
-        ],
-      },
-    ],
-    headshots: '[FOUNDER INPUT: headshots, optional]',
-    workingWith: [
-      'Energia Ventures, incubator',
-      'JHSC Ventures Shadow Institute, Fall 2026',
-      'Mitacs Accelerate application submitted, with Dr. Kenneth Kent (UNB) as academic supervisor',
-    ],
-    missing: 'Insurance broker and legal counsel. Both are budgeted in the raise.',
-    sources: ['Founder’s professional history. Mitacs application, submitted.'],
-    timing: { five: 20, twenty: 90 },
+    bottomLine: 'Working with Energia Ventures (incubator), the JHSC Ventures Shadow Institute, and Dr. Kenneth Kent (UNB), academic supervisor on our submitted Mitacs application. Next to add: an insurance broker and legal counsel, both budgeted.',
+    sources: ['Team members’ professional histories. Mitacs application, submitted.'],
+    timing: { five: 25, twenty: 90 },
     notes: {
-      five: '“At Copart, I worked on identity verification for people registering on an online auction portal, and at Skyhigh I worked on cloud security. Adarsh Shaw is our CTO, and Shivani Shinde leads HR and operations. We’re at Energia Ventures, and our Mitacs application with Dr. Kenneth Kent at UNB is submitted.”',
+      five: '“At Copart, I worked on identity verification for people registering on an auction portal. Adarsh, our CTO, is a software architect at Tavant and built the AI engine behind NutriLens. Shivani has an MBA in HR and Finance, managed frontline restaurant teams, and leads companion recruitment, checks and support.”',
       twenty: [
         'Scars: the founder booked and paid for his mother’s trip and searched Facebook and WhatsApp groups for someone on her route, and found no one.',
         'Skills: identity verification is Boardwith’s first trust check; the founder has done it in production.',
-        '[FOUNDER INPUT: one sentence each on Adarsh and Shivani]',
-        'The gap: trust-and-safety operations and legal drafting. Insurance and legal counsel are budgeted; Energia Ventures mentors and Dr. Kent partly cover the rest.',
+        'Adarsh Shaw, CTO: software architect and lead engineer at Tavant; previously designed production data pipelines at Infosys; Google Cloud certified. Built the core AI engine behind NutriLens (Google Agentic AI Hackathon 2025), shipping LLM features end to end in a React/Node app.',
+        'Shivani Shinde, HR & Operations: MBA in HR and Finance; former manager at a restaurant chain, leading frontline teams and customer service. Leads companion recruitment, onboarding and background checks, plus traveller and companion support.',
+        'Aditya’s longer bio: Senior Software Engineer at Copart India Technology Centre (2021–2025), working on identity verification for user registration; cloud security auditing for AWS and Azure at Skyhigh Security; Master of Computer Science student at UNB.',
+        'The gap: legal drafting and insurance. Shivani now covers companion operations; insurance and legal counsel are budgeted, and Energia Ventures mentors and Dr. Kent partly cover the rest.',
       ],
     },
   },
@@ -384,7 +379,7 @@ export const slides = [
     title: 'Current status, timeline, use of funds',
     layout: 'L1',
     theme: 'teal',
-    headline: 'C$20,000 funds six months to run our first 10 trips and learn whether families pay.',
+    headline: 'C$30,000 funds six months to run our first 10 trips and learn whether families pay.',
     today: {
       title: 'Today',
       tag: { kind: 'evidence', qualifier: '28 Sept 2026' },
@@ -408,28 +403,29 @@ export const slides = [
     },
     ask: {
       title: 'The ask',
-      value: 'C$20,000',
-      instrument: '[FOUNDER INPUT: instrument, e.g. SAFE, convertible note or grant, and terms]',
-      fundsLabel: 'Use of funds, C$19,960',
+      value: 'C$30,000',
+      instrument: 'Pre-seed SAFE (post-money), C$1M valuation cap, 20% discount, C$10,000 minimum',
+      fundsLabel: 'Use of funds, C$29,960',
       funds: [
         { label: 'Mitacs contribution', value: 7500, display: 'C$7,500' },
         { label: 'Insurance and legal', value: 8000, display: 'C$8,000', tag: { kind: 'estimate', text: 'Estimate until quoted' } },
         { label: 'Checks and refunds', value: 2460, display: 'C$2,460' },
-        { label: 'Software and outreach', value: 2000, display: 'C$2,000' },
+        { label: 'MVP, infrastructure and outreach', value: 12000, display: 'C$12,000' },
       ],
     },
     close: 'Every parent’s first flight alone, with someone checked beside them.',
-    sources: ['Use of funds from the Week 3 execution outline (upper end of each range). Mitacs Accelerate program terms.'],
+    sources: ['Use of funds from the Week 3 execution outline (upper end of each range), with C$12,000 for MVP, infrastructure and outreach set by the founder. Mitacs Accelerate program terms.'],
     timing: { five: 40, twenty: 120 },
     notes: {
-      five: '“Today we have 401 survey responses, six interviews, one companion and a community association ready to help, and zero paid trips. We’re raising 20,000 dollars to change that. It covers six months: our Mitacs contribution, insurance, legal terms, companion checks and a refund buffer. No paid trip runs before insurance and signed terms. Ten trips will show us the match rate, the price families accept, what we make per trip, and whether every trip was safe. Every parent’s first flight alone should have someone checked beside them. Thank you.”',
+      five: '“Today we have 401 survey responses, six interviews, one companion and a community association ready to help, and zero paid trips. We’re raising 30,000 dollars on a SAFE to change that. It covers six months: our Mitacs contribution, insurance, legal terms, companion checks, building the app, and reaching our first families. No paid trip runs before insurance and signed terms. Ten trips will show us the match rate, the price families accept, what we make per trip, and whether every trip was safe. Every parent’s first flight alone should have someone checked beside them. Thank you.”',
       twenty: [
         'Said, not shown: the Mitacs contribution unlocks a C$15,000 internship award if approved; no paid trip runs before insurance and signed terms; month six reports match rate, accepted price, contribution per trip and incidents, and tests connection-only help at C$40–60.',
         'Status: registered NB corporation; Energia Ventures; Shadow Institute; Mitacs submitted; in talks with Stripe Identity, Jumio and Certn; insurance and legal not yet engaged.',
         'Timeline month by month; the December break is about ten weeks away.',
         'Use of funds line by line. Mitacs: the C$7,500 contribution unlocks a C$15,000 internship award if approved; the founder is the intern, so it funds him full-time on Boardwith.',
-        'If less than C$20,000 is raised, the first trips run unpaid and the pilot still measures match rate and safety.',
-        '[FOUNDER INPUT: instrument and terms]',
+        'If less than C$30,000 is raised, the first trips run unpaid and the pilot still measures match rate and safety.',
+        'Terms: pre-seed SAFE (post-money), C$1M valuation cap, 20% discount.',
+        'MVP, infrastructure and outreach, C$12,000: building the app and the cloud infrastructure it runs on, so the pilot moves off forms and hand-matching, plus about C$500–1,000 of printing and events to reach the first families.',
         'End on the close line, then stop talking.',
       ],
     },
@@ -572,6 +568,8 @@ export const slides = [
       tag: { kind: 'assumption', qualifier: 'untested' },
       items: [
         ['Companion no-show', 'full refund'],
+        ['Family cancels', 'full refund before a match; after a match, the companion’s payout is kept'],
+        ['Long delay', 'the companion’s payout doesn’t change'],
         ['Missed connection', 'the companion stays; the founder helps the family and airline rebook'],
         ['Illness', 'the companion alerts airline or airport staff; the founder calls the family'],
       ],

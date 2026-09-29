@@ -3,7 +3,6 @@ import Slide from '../components/Slide.jsx';
 import Headline from '../components/Headline.jsx';
 import Lockup from '../components/Lockup.jsx';
 import WindowFrame from '../components/WindowFrame.jsx';
-import Rich from '../components/Rich.jsx';
 import typo from '../styles/type.module.css';
 import s from './Cover.module.css';
 
@@ -17,14 +16,11 @@ export default function Cover({ slide, active }) {
         </Headline>
         <div className={`${typo.body} ${s.contact}`}>
           <p>
-            <span className={typo.name}>{company.founder.name}</span>, {company.founder.title}{' '}
-            <Rich text={company.founder.titleInput} />
+            <span className={typo.name}>{company.founder.name}</span>, {company.founder.title}
           </p>
           <p>{company.email}</p>
           <p>{company.website}</p>
-          <p>
-            <Rich text={company.phone} />
-          </p>
+          <p className={`${typo.caption} ${s.confidential}`}>{company.confidentialLine}</p>
         </div>
       </div>
       <div className={s.window}>
