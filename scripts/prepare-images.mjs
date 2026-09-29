@@ -112,7 +112,17 @@ function teamJobs() {
   ];
   const files = existsSync(SRC) ? readdirSync(SRC) : [];
   return people.map(({ key, face }) => {
-    // prefer a format sharp reads directly over HEIC
+    // Ready-made headshots (e.g. "Aditya_headshot_portrait_4x5.jpg") are
+    // already cropped and matched: convert them as they are (brief, 12.4).
+    const ready = files.find((f) => f.toLowerCase().startsWith(key) && f.toLowerCase().includes('headshot'));
+    if (ready) {
+      return {
+        label: `team-${key}.webp (slide 8, used as supplied)`,
+        src: join(SRC, ready),
+        run: (src) => sharp(src).rotate().resize({ width: 600 }).webp({ quality: 82 }).toFile(join(OUT, `team-${key}.webp`)),
+      };
+    }
+    // Otherwise crop an ordinary photo; prefer a format sharp reads over HEIC.
     const hits = files.filter((f) => f.toLowerCase().startsWith(key) && /\.(jpe?g|png|webp|heic|heif)$/i.test(f));
     hits.sort((x, y) => /\.hei[cf]$/i.test(x) - /\.hei[cf]$/i.test(y));
     return {

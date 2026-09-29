@@ -17,7 +17,7 @@ npm run preview    # serve dist/
 
 The converted images are committed in `public/images/`. To redo them, put the originals in `source-images/` (the names are listed in `source-images/README.md`) and run `npm run images`, then commit `public/images/` and `public/favicon.png`.
 
-**Team photos (slide 8)** are matched by first name (`Aditya.*`, `Adarsh.*`, `Shivani.*`). Every photo gets the same crop: head and shoulders, eyes 38% from the top, the same head size. The crop uses face positions measured for each current photo, set in `teamJobs()` in `scripts/prepare-images.mjs`, so a replacement photo needs new numbers there. iPhone `.heic` files are converted with the Mac's built-in `sips`; on other systems, export the photo as a JPEG first. If a photo is missing, the slide shows the person's initials in the window frame.
+**Team photos (slide 8)** are matched by first name. A file with "headshot" in its name, such as `Aditya_headshot_portrait_4x5.jpg`, is used as supplied. Any other photo is cropped with the face positions set in `teamJobs()` in `scripts/prepare-images.mjs`. iPhone `.heic` files are converted with the Mac's built-in `sips`; on other systems, export the photo as a JPEG first. If a photo is missing, the slide shows the person's initials in the window frame.
 
 ## Presenting
 
@@ -70,6 +70,6 @@ Each slide shows only its "On the slide" text from the brief, about 50 words bes
 - **Fonts are self-hosted** through Fontsource (the brief allows this) instead of loaded from Google Fonts. There's no third-party request, and the layout check measures the real faces. Headlines and the hero use Anek Latin at 87.5% width (semi-condensed), which the brief describes as the signage look.
 - **Slide 3:** the two price anchors sit side by side.
 - **Slide 10:** every use-of-funds segment is white at stepped opacity. None is orange, because the brief's "one orange element per slide" rule is already met by the C$30,000.
-- **Team photos:** the brief describes ready-made 600 × 876 files on a grey background. The repo has the earlier 480 × 702 crops instead, made from your originals with the same framing for all three. They fit the new 200 × 292 frame, because the proportions match. To use the new files, save them as `public/images/team-*.webp`; no code change is needed.
+- **Team photos:** the matched headshots (`source-images/*_headshot_portrait_4x5.jpg`, 1200 × 1500) are converted as they are to 600 × 750 WebP, with no re-cropping. The window frame shows them with `object-fit: cover` and `object-position: 50% 40%`. The brief's 600 × 876 is the same framing at a slightly taller ratio.
 - **Backup A3** is the only slide with body text under 32px: its two tables and notes are set at 28px. Everything in it only fits at that size.
 - **Lighthouse** scores weren't measured in this environment. Run Lighthouse on the Netlify preview to confirm the 95+ accessibility and 90+ performance targets.
