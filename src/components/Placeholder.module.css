@@ -1,0 +1,12 @@
+.placeholder {
+  display: inline;
+  padding: 0.05em 0.35em;
+  color: var(--bw-orange-ink);
+  background: var(--bw-peach);
+  outline: 2px dashed var(--bw-orange-ink);
+  outline-offset: -2px;
+  border-radius: 6px;
+  font-weight: 500;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}

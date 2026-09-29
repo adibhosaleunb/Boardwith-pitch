@@ -1,0 +1,35 @@
+:root {
+  --bw-teal-900: #17393a;
+  --bw-teal-700: #2e6465;
+  --bw-teal-500: #428b8a;
+  --bw-teal-100: #daf0ef;
+  --bw-mist: #edf8f7;
+  --bw-paper: #ffffff;
+  --bw-orange-400: #f0a452;
+  --bw-orange-ink: #a85a12;
+  --bw-peach: #fbe3c6;
+  --bw-grey-600: #5e676a;
+  --bw-grey-300: #c9cfd1;
+
+  --font-display: 'Anek Latin Variable', 'Anek Latin', 'Arial Narrow', system-ui, sans-serif;
+  --font-text: 'Mukta', system-ui, sans-serif;
+
+  /* canvas units (1920 × 1080 stage) */
+  --pad-x: 120px;
+  --pad-top: 96px;
+  --pad-bottom: 96px;
+  --gap-major: 48px;
+  --gap-minor: 24px;
+
+  --fade: 200ms;
+  --fade-text: 200ms;
+  --fade-image: 900ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --fade: 0ms !important;
+    --fade-text: 0ms !important;
+    --fade-image: 0ms !important;
+  }
+}

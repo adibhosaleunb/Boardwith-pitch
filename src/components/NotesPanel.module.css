@@ -1,0 +1,62 @@
+.panel {
+  flex: 0 0 min(40vh, 380px);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: var(--bw-paper);
+  border-top: 1px solid var(--bw-grey-300);
+  font-family: var(--font-text);
+  color: var(--bw-teal-900);
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding: 10px 24px;
+  border-bottom: 1px solid var(--bw-grey-300);
+}
+
+.tabs {
+  display: flex;
+  gap: 4px;
+}
+
+.tabs button {
+  padding: 6px 14px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--bw-grey-600);
+  cursor: pointer;
+}
+
+.tabs .on {
+  background: var(--bw-mist);
+  color: var(--bw-teal-700);
+}
+
+.where {
+  flex: 1;
+  font-size: 16px;
+  color: var(--bw-grey-600);
+}
+
+.body {
+  flex: 1;
+  overflow: auto;
+  padding: 16px 24px 24px;
+  font-size: 21px;
+  line-height: 1.5;
+  max-width: 72em;
+}
+
+.points {
+  display: grid;
+  gap: 10px;
+  list-style: disc;
+  padding-left: 1.2em;
+}

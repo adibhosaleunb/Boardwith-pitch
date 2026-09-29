@@ -1,0 +1,258 @@
+.phone {
+  position: relative;
+  width: 240px;
+  height: 432px;
+  border: 2px solid var(--bw-grey-300);
+  border-radius: 32px;
+  background: var(--bw-paper);
+  overflow: hidden;
+  font-family: var(--font-text);
+  font-size: 15px;
+  line-height: 1.3;
+  color: var(--bw-teal-900);
+}
+
+.content {
+  padding: 34px 18px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sample {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 14px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--bw-grey-600);
+}
+
+.h {
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.flight {
+  padding: 8px 10px;
+  border: 1.5px solid var(--bw-grey-300);
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.label,
+.line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--bw-grey-600);
+}
+
+.label svg,
+.line svg {
+  color: var(--bw-teal-700);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  padding: 3px 10px 1px;
+  border-radius: 999px;
+  background: var(--bw-mist);
+  border: 1.5px solid var(--bw-teal-500);
+  color: var(--bw-teal-700);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.toggleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.toggle {
+  flex: none;
+  position: relative;
+  width: 36px;
+  height: 20px;
+  border-radius: 999px;
+  background: var(--bw-teal-700);
+}
+
+.toggle::after {
+  content: '';
+  position: absolute;
+  right: 3px;
+  top: 3px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--bw-paper);
+}
+
+.button,
+.ghost {
+  display: block;
+  padding: 9px 10px 7px;
+  border-radius: 999px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.button {
+  background: var(--bw-teal-700);
+  color: var(--bw-paper);
+}
+
+.ghost {
+  border: 1.5px solid var(--bw-teal-700);
+  color: var(--bw-teal-700);
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.buttons > span {
+  padding-left: 4px;
+  padding-right: 4px;
+  font-size: 13px;
+}
+
+.centre {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0 6px;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--bw-teal-100);
+  color: var(--bw-teal-500);
+}
+
+.checks {
+  display: grid;
+  gap: 12px;
+}
+
+.checks li {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.tick {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--bw-teal-700);
+  color: var(--bw-paper);
+}
+
+/* Screen 3: DEL ● — ● YYZ — ● YFC, both legs in orange (slide 4's one orange). */
+.route {
+  display: flex;
+  align-items: center;
+  margin: 12px 0 4px;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.stop {
+  position: relative;
+  padding-top: 18px;
+}
+
+.stop::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  margin-left: -6px;
+  border-radius: 50%;
+  background: var(--bw-teal-900);
+}
+
+.leg {
+  flex: 1;
+  height: 4px;
+  margin: 0 -6px;
+  align-self: flex-start;
+  margin-top: 4px;
+  border-radius: 2px;
+  background: var(--bw-orange-400);
+}
+
+.planned {
+  display: flex;
+}
+
+.smallTag {
+  font-size: 13px !important;
+  padding: 2px 8px 1px !important;
+}
+
+.timeline {
+  position: relative;
+  display: grid;
+  gap: 18px;
+  padding-left: 22px;
+  margin-top: 4px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: var(--bw-grey-300);
+}
+
+.timeline li {
+  position: relative;
+  display: grid;
+}
+
+.timeline li::before {
+  content: '';
+  position: absolute;
+  left: -22px;
+  top: 5px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--bw-teal-700);
+}
+
+.time {
+  font-size: 13px;
+  color: var(--bw-grey-600);
+}

@@ -1,0 +1,119 @@
+/* Template L2: text x 120 → 896, image x 960 → 1920 (shared by slides 2 and 3). */
+.column {
+  position: absolute;
+  left: 120px;
+  top: 96px;
+  width: 776px;
+  bottom: 96px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sub {
+  margin-top: 20px;
+}
+
+.stories {
+  margin-top: 48px;
+  display: grid;
+  gap: 24px;
+}
+
+.metric {
+  margin-top: 48px;
+}
+
+.sources {
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+.changes {
+  margin-top: 32px;
+  display: grid;
+  gap: 10px;
+}
+
+.changes li {
+  position: relative;
+  padding-left: 36px;
+}
+
+.changes li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--bw-teal-500);
+}
+
+.prices {
+  margin: 36px 0 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 32px;
+}
+
+.price {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.price dt {
+  white-space: nowrap;
+}
+
+.price dd {
+  margin: 0;
+}
+
+.prefix {
+  font-family: var(--font-text);
+  font-size: 34px;
+  font-weight: 500;
+  font-stretch: 100%;
+  color: var(--bw-grey-600);
+}
+
+:global(.is-reading) .column {
+  position: static;
+  width: auto;
+}
+
+:global(.is-reading) .sub {
+  margin-top: 12px;
+}
+
+:global(.is-reading) .stories,
+:global(.is-reading) .changes,
+:global(.is-reading) .metric,
+:global(.is-reading) .prices {
+  margin-top: 24px;
+  gap: 12px;
+}
+
+:global(.is-reading) .changes li {
+  padding-left: 22px;
+}
+
+:global(.is-reading) .changes li::before {
+  width: 10px;
+  height: 10px;
+}
+
+:global(.is-reading) .prices {
+  grid-template-columns: 1fr;
+  row-gap: 16px;
+}
+
+:global(.is-reading) .prefix {
+  font-size: 16px;
+}
+
+:global(.is-reading) .sources {
+  padding-top: 24px;
+}

@@ -1,0 +1,109 @@
+.journey {
+  display: grid;
+  /* the widest step title needs ~430px on one line */
+  grid-template-columns: 440px 440px 440px 1fr;
+}
+
+.step {
+  position: relative;
+}
+
+.rail {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 48px;
+  margin-bottom: 8px;
+}
+
+/* the route line joining the steps */
+.rail::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
+  background: var(--bw-teal-700);
+  z-index: 0;
+}
+
+.step:last-child .rail::before {
+  right: auto;
+  width: 48px;
+}
+
+.rail > * {
+  position: relative;
+  z-index: 1;
+}
+
+.rail > span:last-child {
+  box-shadow: 0 0 0 8px var(--bw-paper);
+}
+
+.num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--bw-teal-700);
+  color: var(--bw-paper);
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 600;
+  box-shadow: 0 0 0 8px var(--bw-paper);
+}
+
+.title {
+  margin-top: 8px;
+  white-space: nowrap;
+  font-family: var(--font-text);
+  font-size: 34px;
+  line-height: 1.3;
+  font-weight: 400;
+}
+
+:global(.is-reading) .journey {
+  grid-template-columns: 1fr;
+  row-gap: 28px;
+}
+
+:global(.is-reading) .step {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 16px;
+  align-items: start;
+}
+
+:global(.is-reading) .rail {
+  grid-column: 1 / -1;
+  height: 32px;
+  margin-bottom: 8px;
+}
+
+:global(.is-reading) .rail::before {
+  display: none;
+}
+
+:global(.is-reading) .num {
+  width: 32px;
+  height: 32px;
+  font-size: 18px;
+  box-shadow: none;
+}
+
+:global(.is-reading) .step > div[aria-hidden] {
+  transform: scale(0.6);
+  transform-origin: top left;
+  margin: 0 -96px -192px 0;
+}
+
+:global(.is-reading) .title {
+  margin-top: 0;
+  white-space: normal;
+  font-size: clamp(17px, 4.5vw, 20px);
+}

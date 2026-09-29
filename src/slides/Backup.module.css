@@ -1,0 +1,294 @@
+/* Template L4 for the backups: columns separated by whitespace or one rule. */
+.cols {
+  display: grid;
+  margin-top: 44px;
+}
+
+.three {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.two {
+  grid-template-columns: 1fr 1fr;
+}
+
+.cols > * {
+  padding: 0 40px;
+}
+
+.cols > *:first-child {
+  padding-left: 0;
+}
+
+.cols > *:last-child {
+  padding-right: 0;
+}
+
+.cols > * + * {
+  border-left: 1px solid var(--bw-grey-300);
+}
+
+.colTitle {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-family: var(--font-text);
+  font-size: 34px;
+  line-height: 1.25;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.icon {
+  color: var(--bw-teal-700);
+}
+
+.items {
+  display: grid;
+  gap: 14px;
+}
+
+.items li {
+  position: relative;
+  padding-left: 26px;
+}
+
+.items li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--bw-teal-500);
+}
+
+.stack {
+  display: grid;
+  gap: 28px;
+  align-content: start;
+}
+
+.foot {
+  position: absolute;
+  left: 120px;
+  right: 120px;
+  bottom: 96px;
+  display: grid;
+  gap: 4px;
+}
+
+/* Reference text on the densest backup (A3): 28px so every figure from
+   the brief stays on the slide (see README, "Deviations"). */
+.ref {
+  font-family: var(--font-text);
+  font-size: 28px;
+  line-height: 1.3;
+  text-wrap: pretty;
+}
+
+.tight {
+  margin-top: 24px;
+  grid-template-columns: 1fr 1.3fr;
+}
+
+.tight .stack {
+  gap: 16px;
+}
+
+/* A2 ladder */
+.ladder {
+  margin-top: 24px;
+  display: grid;
+  gap: 8px;
+}
+
+.rung {
+  display: grid;
+  grid-template-columns: 190px 1fr 300px 370px;
+  align-items: center;
+  column-gap: 24px;
+  padding: 6px 24px;
+  margin-right: calc(var(--rung) * 56px);
+  border-left: 8px solid var(--bw-teal-700);
+  background: var(--bw-mist);
+  font-family: var(--font-text);
+  font-size: 32px;
+  line-height: 1.25;
+}
+
+.rung:nth-child(2) {
+  border-left-color: var(--bw-teal-500);
+}
+
+.rung:nth-child(3) {
+  border-left-color: var(--bw-teal-100);
+}
+
+.rungLevel {
+  font-weight: 600;
+  font-size: 32px;
+}
+
+.rungNum {
+  white-space: nowrap;
+  font-family: var(--font-display);
+  font-size: 56px;
+  line-height: 1;
+  font-weight: 600;
+  font-stretch: 87.5%;
+  font-variant-numeric: tabular-nums;
+}
+
+/* A3 */
+.econ {
+  display: grid;
+  grid-template-columns: 1080px 1fr;
+  column-gap: 56px;
+  margin-top: 24px;
+}
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: var(--font-text);
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+.tableTitle {
+  caption-side: top;
+  text-align: left;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 1.25;
+  padding-bottom: 2px;
+}
+
+.table th,
+.table td {
+  text-align: left;
+  padding: 3px 12px 1px 0;
+  border-bottom: 1px solid var(--bw-grey-300);
+  vertical-align: top;
+}
+
+.table thead th {
+  color: var(--bw-grey-600);
+  font-weight: 600;
+  font-size: 24px;
+}
+
+.table tbody th {
+  font-weight: 600;
+}
+
+.table td {
+  font-weight: 500;
+}
+
+.hl {
+  background: var(--bw-mist);
+  padding-left: 10px !important;
+}
+
+.t2 {
+  margin-top: 12px;
+}
+
+.t2 tbody th {
+  font-weight: 500;
+  color: var(--bw-grey-600);
+  width: 420px;
+}
+
+.tableNote {
+  margin-top: 6px;
+}
+
+.econNotes {
+  display: grid;
+  gap: 24px;
+  align-content: start;
+  padding-top: 46px;
+}
+
+.safety {
+  margin-top: 48px;
+}
+
+/* Reading mode */
+:global(.is-reading) .cols,
+:global(.is-reading) .econ {
+  grid-template-columns: 1fr;
+  row-gap: 24px;
+  margin-top: 24px;
+}
+
+:global(.is-reading) .cols > * {
+  padding: 0;
+  border: 0;
+}
+
+:global(.is-reading) .cols > * + * {
+  padding-top: 20px;
+  border-top: 1px solid var(--bw-grey-300);
+}
+
+:global(.is-reading) .colTitle {
+  font-size: clamp(18px, 4.8vw, 21px);
+}
+
+:global(.is-reading) .colTitle svg {
+  width: 22px;
+  height: 22px;
+}
+
+:global(.is-reading) .foot {
+  position: static;
+  margin-top: 24px;
+}
+
+:global(.is-reading) .rung {
+  grid-template-columns: 1fr;
+  row-gap: 4px;
+  margin-right: 0;
+  padding: 10px 14px;
+  font-size: clamp(15px, 4vw, 18px);
+}
+
+:global(.is-reading) .rungNum {
+  font-size: clamp(26px, 7vw, 32px);
+}
+
+:global(.is-reading) .ref {
+  font-size: clamp(16px, 4.2vw, 19px);
+}
+
+:global(.is-reading) .table,
+:global(.is-reading) .tableTitle {
+  font-size: clamp(13px, 3.5vw, 16px);
+}
+
+:global(.is-reading) .table thead th {
+  font-size: clamp(12px, 3.2vw, 14px);
+}
+
+:global(.is-reading) .table th,
+:global(.is-reading) .table td {
+  padding-right: 6px;
+}
+
+:global(.is-reading) .table td {
+  white-space: nowrap;
+}
+
+:global(.is-reading) .t2 tbody th {
+  width: auto;
+}
+
+:global(.is-reading) .econNotes {
+  padding-top: 0;
+}

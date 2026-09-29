@@ -1,0 +1,132 @@
+.figure {
+  position: relative;
+  width: 1680px;
+  margin: 0;
+}
+
+.above {
+  position: relative;
+  height: 56px;
+}
+
+.label {
+  position: absolute;
+  bottom: 10px;
+  font-family: var(--font-text);
+  font-size: 34px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.label strong {
+  font-size: 40px;
+  font-weight: 600;
+}
+
+.right {
+  text-align: right;
+}
+
+.bar {
+  display: flex;
+  height: 80px;
+}
+
+.seg {
+  display: block;
+  height: 100%;
+}
+
+.seg + .seg {
+  border-left: 3px solid var(--bw-paper);
+}
+
+.companion {
+  background: var(--bw-teal-500);
+}
+
+.cost {
+  background: var(--bw-grey-300);
+}
+
+.boardwith {
+  background: var(--bw-orange-400);
+}
+
+.below {
+  position: relative;
+  height: 112px;
+}
+
+.leaders {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.leaders polyline {
+  fill: none;
+  stroke: var(--bw-grey-600);
+  stroke-width: 2;
+}
+
+.costs {
+  position: absolute;
+  right: 0;
+  top: 26px;
+  display: flex;
+  gap: 56px;
+  text-align: right;
+}
+
+.costItem {
+  font-family: var(--font-text);
+  font-size: 34px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.costItem strong {
+  font-size: 40px;
+  font-weight: 600;
+}
+
+.note {
+  display: block;
+  font-size: 24px;
+  color: var(--bw-grey-600);
+  white-space: nowrap;
+}
+
+/* Reading mode: a four-line list. */
+.list ul {
+  display: grid;
+  gap: 8px;
+}
+
+.listCaption {
+  font-size: clamp(17px, 4.5vw, 20px);
+  margin-bottom: 10px;
+  color: var(--bw-grey-600);
+}
+
+.list li {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: clamp(17px, 4.5vw, 20px);
+  line-height: 1.4;
+}
+
+.list .note {
+  display: inline;
+  font-size: 0.8em;
+  white-space: normal;
+}
+
+.swatch {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+}

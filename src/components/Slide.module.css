@@ -1,0 +1,58 @@
+.slide {
+  position: absolute;
+  inset: 0;
+  width: 1920px;
+  height: 1080px;
+  padding: var(--pad-top) var(--pad-x) var(--pad-bottom);
+  background: var(--bw-paper);
+  color: var(--bw-teal-900);
+  overflow: hidden;
+}
+
+.teal {
+  background: var(--bw-teal-700);
+  color: var(--bw-paper);
+}
+
+/* Live stage: stacked, crossfaded. */
+.stage {
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity var(--fade-text) ease-in-out,
+    visibility 0s linear var(--fade-text);
+}
+
+.stage.active {
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity var(--fade-text) ease-in-out,
+    visibility 0s linear 0s;
+}
+
+/* Print: one per page, no transitions. */
+.print {
+  position: relative;
+  break-after: page;
+  page-break-after: always;
+}
+
+.thumb {
+  position: absolute;
+}
+
+/* Reading mode: stacked scrolling sections. */
+.reading {
+  position: relative;
+  width: auto;
+  height: auto;
+  min-height: 0;
+  padding: 40px 16px 48px;
+  overflow: visible;
+  border-bottom: 1px solid var(--bw-grey-300);
+}
+
+.reading.teal {
+  border-bottom-color: var(--bw-teal-900);
+}

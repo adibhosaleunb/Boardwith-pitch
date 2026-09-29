@@ -1,0 +1,159 @@
+.loop {
+  position: relative;
+  width: 1000px;
+  height: 390px;
+  margin: 0;
+  font-family: var(--font-text);
+}
+
+.svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.arc {
+  position: absolute;
+  top: 0;
+  width: 440px;
+  font-size: 32px;
+  line-height: 1.25;
+  color: var(--bw-teal-700);
+}
+
+.arcLeft {
+  left: 0;
+}
+
+.arcRight {
+  left: 560px;
+}
+
+.node {
+  position: absolute;
+  top: 150px;
+}
+
+.families {
+  left: 0;
+  width: 440px;
+}
+
+.match {
+  left: 470px;
+  top: 124px;
+  width: 280px;
+}
+
+.students {
+  left: 760px;
+  width: 240px;
+}
+
+.dot {
+  display: inline-block;
+  vertical-align: -6px;
+  width: 44px;
+  height: 44px;
+  margin-right: 12px;
+  border-radius: 50%;
+  background: var(--bw-teal-500);
+}
+
+.dotOrange {
+  background: var(--bw-orange-400);
+}
+
+.ring {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  border: 3px solid var(--bw-teal-700);
+  background: var(--bw-paper);
+  color: var(--bw-teal-700);
+  margin-bottom: 10px;
+}
+
+.title {
+  font-size: 34px;
+  line-height: 1.2;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.students .title {
+  text-indent: -56px;
+  padding-left: 56px;
+}
+
+.text {
+  font-size: 32px;
+  line-height: 1.28;
+}
+
+.refer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  font-size: 32px;
+  line-height: 1.2;
+  color: var(--bw-teal-700);
+}
+
+/* Reading mode: nodes stacked, arrows as text. */
+:global(.is-reading) .loop {
+  width: auto;
+  height: auto;
+  display: grid;
+  gap: 16px;
+}
+
+:global(.is-reading) .loop > * {
+  position: static;
+  width: auto;
+}
+
+:global(.is-reading) .arc {
+  order: 4;
+  font-size: clamp(15px, 4vw, 18px);
+}
+
+:global(.is-reading) .arc::before {
+  content: '↻ ';
+}
+
+:global(.is-reading) .title {
+  font-size: clamp(17px, 4.5vw, 20px);
+}
+
+:global(.is-reading) .text,
+:global(.is-reading) .refer {
+  font-size: clamp(16px, 4.2vw, 19px);
+}
+
+:global(.is-reading) .dot {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  vertical-align: -2px;
+}
+
+:global(.is-reading) .students .title {
+  text-indent: 0;
+  padding-left: 0;
+}
+
+:global(.is-reading) .ring {
+  width: 44px;
+  height: 44px;
+  margin-bottom: 6px;
+}
+
+:global(.is-reading) .ring svg {
+  width: 24px;
+  height: 24px;
+}

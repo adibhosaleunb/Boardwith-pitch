@@ -1,0 +1,58 @@
+.timer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-text);
+  font-size: 16px;
+  color: var(--bw-teal-900);
+}
+
+.clock {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  min-width: 4ch;
+}
+
+.target {
+  color: var(--bw-grey-600);
+}
+
+.behind .clock,
+.behind .target {
+  color: var(--bw-orange-ink);
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.buttons button {
+  padding: 4px 12px;
+  border: 1.5px solid var(--bw-teal-700);
+  border-radius: 999px;
+  background: var(--bw-paper);
+  color: var(--bw-teal-700);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+kbd {
+  font-family: inherit;
+  font-weight: 400;
+  color: var(--bw-grey-600);
+}
+
+.compact {
+  padding: 4px 14px;
+  border-radius: 999px;
+  background: var(--bw-paper);
+  border: 1.5px solid var(--bw-grey-300);
+}
+
+.compact .clock {
+  font-size: 22px;
+}

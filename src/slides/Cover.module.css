@@ -1,0 +1,55 @@
+.text {
+  position: absolute;
+  left: 120px;
+  top: 96px;
+  width: 960px;
+  bottom: 96px;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero {
+  margin-top: auto;
+  color: var(--bw-paper);
+}
+
+.contact {
+  margin-top: 48px;
+  margin-bottom: auto;
+  color: var(--bw-teal-100);
+}
+
+.contact p + p {
+  margin-top: 2px;
+}
+
+.window {
+  position: absolute;
+  right: 120px; /* right edge at x 1800 */
+  top: 160px; /* vertically centred: (1080 − 760) / 2 */
+}
+
+/* Reading mode: the image goes first. */
+:global(.is-reading) .slide {
+  display: flex;
+  flex-direction: column;
+}
+
+:global(.is-reading) .text,
+:global(.is-reading) .window {
+  position: static;
+  width: auto;
+}
+
+:global(.is-reading) .window {
+  order: -1;
+  margin-bottom: 28px;
+}
+
+:global(.is-reading) .hero {
+  margin-top: 28px;
+}
+
+:global(.is-reading) .contact {
+  margin-top: 20px;
+}

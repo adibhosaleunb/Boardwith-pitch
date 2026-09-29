@@ -1,0 +1,54 @@
+.tag {
+  display: inline-block;
+  vertical-align: 0.2em;
+  padding: 5px 14px 3px;
+  border-radius: 999px;
+  font-family: var(--font-text);
+  font-size: 22px;
+  line-height: 1.2;
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: 0;
+  white-space: normal;
+  border: 1.5px solid transparent;
+}
+
+.qualifier {
+  font-weight: 400;
+}
+
+.evidence {
+  color: var(--bw-teal-700);
+  background: var(--bw-mist);
+  border-color: var(--bw-teal-500);
+}
+
+.estimate,
+.assumption,
+.projection,
+.plan {
+  color: var(--bw-grey-600);
+  background: var(--bw-paper);
+  border: 1.5px dashed var(--bw-grey-600);
+}
+
+.concept {
+  color: var(--bw-orange-ink);
+  background: var(--bw-peach);
+  border-color: transparent;
+}
+
+/* On the teal brand slides the dashed tags keep their shape but invert. */
+:global(.theme-teal) .estimate,
+:global(.theme-teal) .assumption,
+:global(.theme-teal) .projection,
+:global(.theme-teal) .plan {
+  color: var(--bw-teal-100);
+  background: transparent;
+  border-color: var(--bw-teal-100);
+}
+
+:global(.is-reading) .tag {
+  font-size: 14px;
+  padding: 3px 10px 2px;
+}

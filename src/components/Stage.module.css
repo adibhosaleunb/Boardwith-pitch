@@ -1,0 +1,18 @@
+.area {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--bw-mist);
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.stage {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-origin: center;
+  background: var(--bw-paper);
+  overflow: hidden;
+}

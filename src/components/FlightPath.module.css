@@ -1,0 +1,110 @@
+.path {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 64px;
+  z-index: 10;
+}
+
+.svg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.rest {
+  stroke: var(--bw-grey-300);
+  stroke-width: 2;
+  stroke-dasharray: 6 8;
+}
+
+.travelled {
+  stroke: var(--bw-teal-700);
+  stroke-width: 2;
+}
+
+.dots li {
+  position: absolute;
+  top: 32px; /* y 1030 on the canvas */
+}
+
+.dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0 -20px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.dot > span {
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--bw-paper);
+  border: 2px solid var(--bw-grey-300);
+}
+
+.done > span {
+  background: var(--bw-teal-700);
+  border-color: var(--bw-teal-700);
+}
+
+.hollow > span {
+  width: 12px;
+  height: 12px;
+  background: transparent;
+  border-color: var(--bw-grey-300);
+}
+
+.dot:hover > span {
+  border-color: var(--bw-teal-700);
+}
+
+.plane {
+  color: var(--bw-orange-400);
+  fill: var(--bw-orange-400);
+  transform: rotate(45deg);
+}
+
+.counter {
+  position: absolute;
+  top: 16px;
+  font-family: var(--font-text);
+  font-size: 24px;
+  line-height: 32px;
+  color: var(--bw-grey-600);
+  font-variant-numeric: tabular-nums;
+}
+
+/* On teal slides the line is teal-100 at 50% and the counter teal-100. */
+.teal .rest,
+.teal .travelled {
+  stroke: var(--bw-teal-100);
+  opacity: 0.5;
+}
+
+.teal .dot > span {
+  background: transparent;
+  border-color: rgba(218, 240, 239, 0.5);
+}
+
+.teal .done > span {
+  background: var(--bw-teal-100);
+  border-color: var(--bw-teal-100);
+}
+
+.teal .counter {
+  color: var(--bw-teal-100);
+}
+
+.teal .dot:focus-visible {
+  outline-color: var(--bw-teal-100);
+}

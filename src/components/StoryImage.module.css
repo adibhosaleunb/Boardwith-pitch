@@ -1,0 +1,45 @@
+.layer,
+.inline {
+  position: absolute;
+  top: 0;
+  left: 960px;
+  width: 960px;
+  height: 1080px;
+  overflow: hidden;
+  background: var(--bw-mist);
+}
+
+.layer {
+  z-index: 5;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--fade) ease-in-out;
+}
+
+.layer.visible {
+  opacity: 1;
+}
+
+.img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity var(--fade-image) ease-in-out;
+}
+
+.img.on {
+  opacity: 1;
+}
+
+:global(.is-reading) .inline {
+  position: relative;
+  left: auto;
+  width: calc(100% + 32px);
+  height: auto;
+  aspect-ratio: 960 / 1080;
+  max-height: 70vh;
+  margin: -40px -16px 24px;
+}
