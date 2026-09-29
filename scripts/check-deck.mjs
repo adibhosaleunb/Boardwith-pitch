@@ -39,6 +39,7 @@ function inspect({ SAFE, MIN_BODY }) {
       if (!text) continue;
       const el = node.parentElement;
       if (el.closest('.sr-only')) continue;
+      if (el.closest('[data-print-line]')) continue; // print footer sits where the flight path would
       const inPhone = !!el.closest('[data-phone]');
       const range = document.createRange();
       range.selectNodeContents(node);

@@ -13,15 +13,11 @@ npm run build      # production build in dist/
 npm run preview    # serve dist/
 ```
 
-### Add the images (needed before pitching)
+### Images
 
-The four manifest images weren't in the repo when the deck was built, so each slide shows a marked gap where its image belongs. To add them:
+The converted images are committed in `public/images/`. To redo them, put the originals in `source-images/` (the names are listed in `source-images/README.md`) and run `npm run images`, then commit `public/images/` and `public/favicon.png`.
 
-1. Put the original attached files in `source-images/` (the names are listed in `source-images/README.md`).
-2. Run `npm run images`. This writes `public/images/*.webp`, `logo-lockup.png` and a favicon cut from the lockup.
-3. Commit the files in `public/images/` and `public/favicon.png`.
-
-Until then, slide 1 shows a "Boardwith" text wordmark in place of the lockup, and `public/favicon.png` is a simple window icon drawn in the brand colours.
+**Team photos (slide 8)** are matched by first name (`Aditya.*`, `Adarsh.*`, `Shivani.*`). Every photo gets the same crop: head and shoulders, eyes 38% from the top, the same head size. The crop uses face positions measured for each current photo, set in `teamJobs()` in `scripts/prepare-images.mjs`, so a replacement photo needs new numbers there. iPhone `.heic` files are converted with the Mac's built-in `sips`; on other systems, export the photo as a JPEG first. If a photo is missing, the slide shows the person's initials in the window frame.
 
 ## Presenting
 
@@ -43,7 +39,9 @@ The URL hash tracks the slide (`#/4`, `#/a2`), so a reload keeps your place. The
 
 **Phones** (under 600px wide, or a phone held upright) get a scrolling reading version.
 
-**Founder inputs:** every `[FOUNDER INPUT: …]` renders as a dashed peach box, so it can't slip into a live pitch. In `npm run dev` a corner badge counts them and the console lists each one. The brief's section 16 lists the inputs. Fill them in `src/data/startupData.js`.
+**Founder inputs:** all were resolved on 28 September, so none show on the slides. If you add one back, write it as `[FOUNDER INPUT: …]` in `src/data/startupData.js`. It then renders as a dashed peach box, and `npm run dev` counts it in a corner badge.
+
+**Print footer:** every `?print` page carries "Boardwith. Pre-seed. Confidential." bottom left.
 
 ## Checking the layout
 
@@ -68,7 +66,6 @@ Connect the repository in Netlify. `netlify.toml` sets the build command, the pu
 Copy is word for word. Where a slide was too full at 1080px, I used the brief's own "cut first" rule, and the cut text stays in the notes or the data:
 
 - **Slide 3:** the Meena pull quote is cut. It's already in the 5-minute script.
-- **Slide 8:** Aditya's third bullet ("6+ years… UNB") is cut. The team columns are 1.5 : 1 : 1 rather than equal, because the co-founder columns hold only placeholders and his column needed the width.
 - **Slide 9:** the companion counts under the bars are cut. They are in the headline and in A3.
 
 Other departures:

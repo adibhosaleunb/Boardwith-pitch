@@ -63,3 +63,41 @@
 :global(.is-reading) .inner {
   padding: 4px;
 }
+
+/* Slide 8 team photos: 160 × 234, a single 6px teal-100 ring on white. */
+.small {
+  width: 160px;
+  height: 234px;
+  padding: 6px;
+  background: var(--bw-teal-100);
+}
+
+.small .inner {
+  padding: 0;
+  background: transparent;
+}
+
+:global(.is-reading) .small {
+  width: 120px;
+  height: auto;
+  aspect-ratio: 160 / 234;
+  padding: 4px;
+}
+
+/* No photo: initials in a plain teal-100 window (never a stock face). */
+.initials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: var(--bw-teal-100);
+  color: var(--bw-teal-700);
+  font-family: var(--font-display);
+  font-size: 56px;
+  font-weight: 600;
+}
+
+:global(.is-reading) .initials {
+  font-size: 36px;
+}

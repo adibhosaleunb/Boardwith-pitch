@@ -42,13 +42,28 @@
   position: absolute;
 }
 
+/* ?print: "Boardwith. Pre-seed. Confidential." bottom left of every page. */
+.printLine {
+  position: absolute;
+  left: 120px;
+  bottom: 36px;
+  font-family: var(--font-text);
+  font-size: 24px;
+  line-height: 1.2;
+  color: var(--bw-grey-600);
+}
+
+.teal .printLine {
+  color: var(--bw-teal-100);
+}
+
 /* Reading mode: stacked scrolling sections. */
 .reading {
   position: relative;
   width: auto;
   height: auto;
   min-height: 0;
-  padding: 40px 16px 48px;
+  padding: 40px max(16px, env(safe-area-inset-right)) 48px max(16px, env(safe-area-inset-left));
   overflow: visible;
   border-bottom: 1px solid var(--bw-grey-300);
 }

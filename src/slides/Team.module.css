@@ -1,23 +1,9 @@
+/* Three columns of 544px (x 120, 688, 1256), separated by whitespace. */
 .people {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr;
-  margin-top: 44px;
-}
-
-.people > * {
-  padding: 0 40px;
-}
-
-.people > *:first-child {
-  padding-left: 0;
-}
-
-.people > *:last-child {
-  padding-right: 0;
-}
-
-.people > * + * {
-  border-left: 1px solid var(--bw-grey-300);
+  grid-template-columns: repeat(3, 544px);
+  column-gap: 24px;
+  margin-top: 48px;
 }
 
 .bottom {
@@ -26,34 +12,13 @@
   right: 120px;
   bottom: 96px;
   display: grid;
-  gap: 8px;
-  padding-top: 24px;
-  border-top: 1px solid var(--bw-grey-300);
-}
-
-.foot {
-  margin-top: 8px;
-}
-
-.sep {
-  display: inline-block;
-  width: 24px;
+  gap: 4px;
 }
 
 :global(.is-reading) .people {
   grid-template-columns: 1fr;
   row-gap: 24px;
   margin-top: 24px;
-}
-
-:global(.is-reading) .people > * {
-  padding: 0;
-  border: 0;
-}
-
-:global(.is-reading) .people > * + * {
-  padding-top: 20px;
-  border-top: 1px solid var(--bw-grey-300);
 }
 
 :global(.is-reading) .bottom {

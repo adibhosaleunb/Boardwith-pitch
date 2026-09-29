@@ -4,7 +4,9 @@
 //   2. npm run images
 //
 // Only the manifest files are used. Everything else in source-images/ is ignored.
-import { existsSync, mkdirSync, readdirSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
+import { existsSync, mkdirSync, mkdtempSync, readdirSync } from 'node:fs';
+import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import sharp from 'sharp';
 
@@ -91,7 +93,69 @@ const jobs = [
         .toFile(join(OUT, 'cover-parent.webp'));
     },
   },
+  ...teamJobs(),
 ];
+
+// ── Team photos (slide 8, brief 12.4) ───────────────────────────────
+// Matched by first name (any capitals or extension). Every photo gets the
+// same framing: head and shoulders, eyes 38% from the top, and the same head
+// size, measured as the eye-to-chin distance. x/y is the midpoint between the
+// eyes and eyeChin the eye-to-chin distance, both in pixels of the upright
+// original. If you replace a photo, measure these again.
+function teamJobs() {
+  const RATIO = 160 / 234;
+  const SIZE = { width: 480, height: 702 };
+  const people = [
+    { key: 'aditya', face: { x: 858, y: 862, eyeChin: 600 } },
+    { key: 'adarsh', face: { x: 196, y: 146, eyeChin: 112 } },
+    { key: 'shivani', face: { x: 1438, y: 1483, eyeChin: 461 } },
+  ];
+  const files = existsSync(SRC) ? readdirSync(SRC) : [];
+  return people.map(({ key, face }) => {
+    // prefer a format sharp reads directly over HEIC
+    const hits = files.filter((f) => f.toLowerCase().startsWith(key) && /\.(jpe?g|png|webp|heic|heif)$/i.test(f));
+    hits.sort((x, y) => /\.hei[cf]$/i.test(x) - /\.hei[cf]$/i.test(y));
+    return {
+      label: `team-${key}.webp (slide 8)`,
+      src: hits[0] ? join(SRC, hits[0]) : null,
+      async run(src) {
+        const input = await readable(src);
+        const { width, height } = await sharp(input).rotate().metadata();
+        const h = Math.round(face.eyeChin * 3);
+        const w = Math.round(h * RATIO);
+        const left = clamp(Math.round(face.x - w / 2), 0, width - w);
+        const top = clamp(Math.round(face.y - 0.38 * h), 0, height - h);
+        if (w < 600 * RATIO) console.warn(`  ! ${key}: the crop is only ${w} × ${h}px, so it is upscaled and may look soft`);
+        await sharp(input)
+          .rotate()
+          .extract({ left, top, width: w, height: h })
+          .resize(SIZE)
+          .webp({ quality: 82 })
+          .toFile(join(OUT, `team-${key}.webp`));
+      },
+    };
+  });
+}
+
+const clamp = (v, lo, hi) => Math.max(lo, Math.min(v, hi));
+
+// sharp's prebuilt binaries can't decode iPhone HEIC photos. On a Mac, fall
+// back to the built-in `sips` to make a temporary JPEG.
+async function readable(src) {
+  if (!/\.hei[cf]$/i.test(src)) return src;
+  try {
+    await sharp(src).metadata().then(() => sharp(src).toBuffer());
+    return src;
+  } catch {
+    const out = join(mkdtempSync(join(tmpdir(), 'bw-')), 'photo.jpg');
+    try {
+      execFileSync('sips', ['-s', 'format', 'jpeg', '-s', 'formatOptions', '95', src, '--out', out], { stdio: 'ignore' });
+      return out;
+    } catch {
+      throw new Error(`Can't read ${src}. Export it as a JPEG (on a Mac: open it in Preview, File → Export) and put that in ${SRC}/.`);
+    }
+  }
+}
 
 mkdirSync(OUT, { recursive: true });
 let missing = 0;
@@ -101,7 +165,12 @@ for (const job of jobs) {
     console.warn(`– skipped ${job.label}: original not found in ${SRC}/`);
     continue;
   }
-  await job.run(job.src);
-  console.log(`✓ ${job.label}  ←  ${job.src}`);
+  try {
+    await job.run(job.src);
+    console.log(`✓ ${job.label}  ←  ${job.src}`);
+  } catch (err) {
+    missing++;
+    console.warn(`✗ ${job.label}: ${err.message}`);
+  }
 }
 if (missing) console.warn(`\n${missing} image(s) still missing; the deck shows a marked gap where each belongs.`);

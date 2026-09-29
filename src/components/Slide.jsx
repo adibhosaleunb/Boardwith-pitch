@@ -1,3 +1,4 @@
+import { company } from '../data/startupData.js';
 import { useDeck } from '../lib/DeckContext.js';
 import styles from './Slide.module.css';
 
@@ -24,6 +25,11 @@ export default function Slide({ slide, total = 10, active = true, theme, classNa
       data-slide={slide.id}
     >
       {children}
+      {mode === 'print' && (
+        <p className={styles.printLine} data-print-line="">
+          {company.printLine}
+        </p>
+      )}
     </section>
   );
 }
