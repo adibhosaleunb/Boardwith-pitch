@@ -34,6 +34,48 @@
   opacity: 1;
 }
 
+/* Slide 3: the warm scene enters black and white, then fills with colour once
+   the 2 → 3 crossfade has settled. Outside `.revealing` and `.waiting` it is
+   plain full colour, so leaving slide 3 never flashes it grey. */
+.warm {
+  will-change: filter;
+}
+
+.warm.waiting {
+  filter: grayscale(1) brightness(0.96);
+}
+
+.warm.revealing {
+  animation: warm-reveal 1600ms cubic-bezier(0.33, 0, 0.2, 1) 700ms both;
+}
+
+@keyframes warm-reveal {
+  0% {
+    filter: grayscale(1) sepia(0) brightness(0.96);
+  }
+  55% {
+    filter: grayscale(0.35) sepia(0.2) brightness(0.99);
+  }
+  100% {
+    filter: grayscale(0) sepia(0) brightness(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .warm.waiting,
+  .warm.revealing {
+    animation: none;
+    filter: none;
+  }
+}
+
+@media print {
+  .warm {
+    animation: none !important;
+    filter: none !important;
+  }
+}
+
 :global(.is-reading) .inline {
   position: relative;
   left: auto;

@@ -145,8 +145,8 @@
 /* A3 */
 .econ {
   display: grid;
-  grid-template-columns: 1080px 1fr;
-  column-gap: 56px;
+  grid-template-columns: 1040px 1fr;
+  column-gap: 40px;
   margin-top: 24px;
 }
 
@@ -202,6 +202,10 @@
   font-weight: 500;
   color: var(--bw-grey-600);
   width: 420px;
+}
+
+.t2 tbody th.spanned {
+  width: auto;
 }
 
 .tableNote {
@@ -291,4 +295,15 @@
 
 :global(.is-reading) .econNotes {
   padding-top: 0;
+}
+
+/* A3 on a phone: the notes wrap to the screen and the wide tables scroll
+   sideways on their own, instead of both running off the right edge. */
+:global(.is-reading) .econ {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+:global(.is-reading) .table {
+  display: block;
+  overflow-x: auto;
 }

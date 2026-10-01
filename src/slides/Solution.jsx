@@ -15,7 +15,7 @@ export default function Solution({ slide, active }) {
   const { mode } = useDeck();
   return (
     <Slide slide={slide} active={active}>
-      {mode !== 'stage' && <StoryImage image={images.solution} />}
+      {mode !== 'stage' && <StoryImage image={images.solution} reveal={mode === 'reading'} />}
       <div className={s.column}>
         <Headline size="short">{slide.headline}</Headline>
         <ul className={s.iconLines}>
