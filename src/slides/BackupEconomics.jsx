@@ -20,21 +20,23 @@ function DataTable({ table, className = '', highlightCol }) {
         </tr>
       </thead>
       <tbody>
-        {table.rows.map((row) => (
-          <tr key={row[0]}>
-            {row.map((cell, i) =>
-              i === 0 ? (
-                <th key={i} scope="row">
-                  {cell}
-                </th>
-              ) : (
-                <td key={i} className={`num ${i === highlightCol ? s.hl : ''}`}>
+        {table.rows.map((row) => {
+          // Empty cells right after the row label widen the label instead.
+          let span = 1;
+          while (span < row.length - 1 && row[span] === '') span++;
+          return (
+            <tr key={row[0]}>
+              <th scope="row" colSpan={span > 1 ? span : undefined} className={span > 1 ? s.spanned : ''}>
+                {row[0]}
+              </th>
+              {row.slice(span).map((cell, j) => (
+                <td key={j + span} className={`num ${j + span === highlightCol ? s.hl : ''}`}>
                   {cell}
                 </td>
-              ),
-            )}
-          </tr>
-        ))}
+              ))}
+            </tr>
+          );
+        })}
       </tbody>
     </table>
   );
@@ -51,6 +53,7 @@ export default function BackupEconomics({ slide, active }) {
         </div>
         <div className={s.econNotes}>
           <p className={typo.caption}>{slide.table1.note}</p>
+          <p className={typo.caption}>{slide.table2.note}</p>
           <p className={s.ref}>
             <span className={typo.name}>Pilot note:</span> {slide.pilot}
           </p>
