@@ -1,14 +1,16 @@
 import { ShieldCheck } from 'lucide-react';
 import { useDeck } from '../lib/DeckContext.js';
+import { Tag } from './EvidenceTag.jsx';
 import { FamilyFigure, StudentFigure } from './People.jsx';
 import styles from './CommunityLoop.module.css';
 
-// Families (teal) and students (orange, as in the logo) both feed the match;
+// Travellers (teal) and students flying home (orange, as in the logo) both
+// feed the match;
 // a dashed arrow curves back to each side for the repeat business. Channels
 // sit in one line under the loop.
 export default function CommunityLoop({ loop }) {
   const { mode } = useDeck();
-  const { families, students, match, arrows, channels } = loop;
+  const { families, students, match, arrows, channels, studentChannels } = loop;
   const reading = mode === 'reading';
 
   return (
@@ -64,6 +66,12 @@ export default function CommunityLoop({ loop }) {
 
       <p className={styles.channels}>
         <span className={styles.channelsLabel}>Channels:</span> {channels.join(' · ')}
+        {studentChannels ? (
+          <>
+            {' · '}
+            <span className={styles.channelsLabel}>{studentChannels.label}</span> {studentChannels.text} <Tag tag={studentChannels.tag} />
+          </>
+        ) : null}
       </p>
     </figure>
   );

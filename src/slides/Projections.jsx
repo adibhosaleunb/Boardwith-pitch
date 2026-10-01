@@ -18,7 +18,7 @@ export default function Projections({ slide, active }) {
       </p>
       <div className={s.grid}>
         <div>
-          <ProjectionChart years={slide.years} title={slide.chartTitle} showCompanions={false} barHeight={290} active={active} />
+          <ProjectionChart years={slide.years} title={slide.chartTitle} segmentLabels={slide.segmentLabels} showCompanions={false} barHeight={262} active={active} />
           <p className={`${typo.caption} ${s.chartNote}`}>{slide.chartNote}</p>
         </div>
         <div className={s.decide}>

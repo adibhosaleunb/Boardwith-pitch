@@ -5,14 +5,14 @@
 }
 
 .sub {
-  margin-top: 16px;
+  margin-top: 12px;
 }
 
 .tagRow {
   display: flex;
   align-items: center;
   gap: 20px;
-  margin-top: 20px;
+  margin-top: 16px;
 }
 
 .stepsNote {

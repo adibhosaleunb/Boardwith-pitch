@@ -2,6 +2,7 @@
 //
 //   npm run build && npm run check            → report + screenshots/
 //   CHECK_URL=http://localhost:5173 npm run check   (use a running server)
+//   npm run check -- --layout-only            → report only, no screenshots
 //
 // Needs playwright-core and a Chromium binary (CHROMIUM_PATH, default
 // /opt/pw-browsers/chromium).
@@ -13,11 +14,14 @@ const EXEC = process.env.CHROMIUM_PATH ?? '/opt/pw-browsers/chromium';
 const OUT = 'screenshots';
 const SLIDES = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'a1', 'a2', 'a3', 'a4'];
 const SAFE = { left: 118, right: 1802, bottom: 1000 }; // flight path lives below y 1000
+const LAYOUT_ONLY = process.argv.includes('--layout-only');
 const MIN_BODY = 32;
 
 async function startServer() {
   if (process.env.CHECK_URL) return { url: process.env.CHECK_URL, stop: () => {} };
-  const proc = spawn('npx', ['vite', 'preview', '--port', '4179', '--strictPort'], { stdio: 'pipe' });
+  // Run vite's own entry point (not through npx) so stop() ends the server
+  // itself and the script can exit.
+  const proc = spawn(process.execPath, ['node_modules/vite/bin/vite.js', 'preview', '--port', '4179', '--strictPort'], { stdio: 'pipe' });
   await new Promise((resolve, reject) => {
     proc.stdout.on('data', (d) => d.toString().includes('4179') && resolve());
     proc.on('exit', (code) => reject(new Error(`preview exited ${code}`)));
@@ -111,10 +115,18 @@ try {
     r.overlaps.forEach((o) => console.log(`   overlap: ${o}`));
     if (Object.keys(r.small).length) console.log(`   under ${MIN_BODY}px:`, JSON.stringify(r.small));
   }
-  await page.emulateMedia({ media: 'print' });
-  await page.pdf({ path: `${OUT}/deck.pdf`, width: '1920px', height: '1080px', printBackground: true });
+  if (!LAYOUT_ONLY) {
+    await page.emulateMedia({ media: 'print' });
+    await page.pdf({ path: `${OUT}/deck.pdf`, width: '1920px', height: '1080px', printBackground: true });
+  }
   await page.close();
+  if (!LAYOUT_ONLY) await shoot();
+} finally {
+  await browser.close();
+  server.stop();
+}
 
+async function shoot() {
   // 2. Screenshots of the live stage at each viewport.
   const viewports = [
     [1920, 1080],
@@ -152,9 +164,6 @@ try {
     console.log('✗ horizontal scroll in reading mode at 390×844');
   }
   await phone.close();
-} finally {
-  await browser.close();
-  server.stop();
 }
 
 console.log(problems ? `\n${problems} problem(s) found.` : '\nAll slides fit.');

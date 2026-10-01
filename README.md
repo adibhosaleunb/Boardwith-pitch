@@ -39,7 +39,7 @@ The URL hash tracks the slide (`#/4`, `#/a2`), so a reload keeps your place. The
 
 **Phones** (under 600px wide, or a phone held upright) get a scrolling reading version.
 
-**Founder inputs:** none show on the slides. The brief's three still open (the re-sized market, vesting for Q&A, and confirming the C$75,000 use-of-funds split proposed on 30 September) keep the figures the slides already use. If you add one back, write it as `[FOUNDER INPUT: …]` in `src/data/startupData.js`. It then renders as a dashed peach box, and `npm run dev` counts it in a corner badge.
+**Founder inputs:** none show on the slides. The brief's three still open (the re-sized parents' market and UNB's actual number of new Indian students a year, vesting for Q&A, and confirming the C$75,000 use-of-funds split proposed on 30 September) keep the figures the slides already use: about 88,000 parent journeys (labelled an estimate being re-sized) and about 125 new UNB students (labelled an assumption). If you add one back, write it as `[FOUNDER INPUT: …]` in `src/data/startupData.js`. It then renders as a dashed peach box, and `npm run dev` counts it in a corner badge.
 
 **Print footer:** every `?print` page carries "Boardwith. Pre-seed. Confidential." bottom left.
 
@@ -55,7 +55,7 @@ npm run build && npm run check
 - runs off the sides, or
 - overlaps other text.
 
-It also lists any text under 32px, so you can confirm it's only sources, footnotes and tags. It saves screenshots at 1920 × 1080, 1366 × 768 and 820 × 1180, a 390 × 844 reading-mode capture and `deck.pdf` to `screenshots/`. It needs Chromium (`CHROMIUM_PATH`, default `/opt/pw-browsers/chromium`).
+It also lists any text under 32px, so you can confirm it's only sources, footnotes and tags. It saves screenshots at 1920 × 1080, 1366 × 768 and 820 × 1180, a 390 × 844 reading-mode capture and `deck.pdf` to `screenshots/`. It needs Chromium (`CHROMIUM_PATH`, default `/opt/pw-browsers/chromium`). For a quick pass while editing copy, `npm run check -- --layout-only` prints the report and skips the screenshots and PDF.
 
 ## Deploy
 
@@ -63,7 +63,9 @@ Connect the repository in Netlify. `netlify.toml` sets the build command, the pu
 
 ## What's on a slide
 
-Each core slide sits between the brief's full copy and its bare "On the slide" copy: a one-line headline, one sub line where it adds context, and every number with a short label that says who, where or what it means (about 70–90 words besides the headline). Quotes, footnote detail and the working behind each number stay in the speaker notes: a slide's 20-minute notes open with a "Said, not shown" line holding whatever is off the slide. Sources appear in the notes panel, the `?print` PDF and phone reading mode, never on the live stage. Only estimates, assumptions, projections and concept screens carry a tag on the core slides; untagged numbers are evidence. The backups keep their evidence tags.
+Each core slide sits between the brief's full copy and its bare "On the slide" copy: a short headline, one sub line where it adds context, and every number with a short label that says who, where or what it means (about 70–90 words besides the headline). Slides 1, 2, 4, 5, 6, 9 and 10 carry the 1 October brief's headlines word for word, since they hold its new framing (anyone 18 or over flying alone, parents first, first-time students second), so slides 2, 4, 5 and 6 now run to two or three lines. Slides 3, 7 and 8 keep their shorter headlines. Quotes, footnote detail and the working behind each number stay in the speaker notes: a slide's 20-minute notes open with a "Said, not shown" line holding whatever is off the slide. Sources appear in the notes panel, the `?print` PDF and phone reading mode, never on the live stage. Only estimates, assumptions, projections and concept screens carry a tag on the core slides; untagged numbers are evidence. The backups keep their evidence tags.
+
+Slide 9's bars stack parents (base) and students (top, a lighter hatch running the other way), named on the year-3 bar only; the totals sit on top. Backup A2's ladder has five rungs: the total, the three serviceable rungs (parents, students, both) and the obtainable rung, which adds UNB's new students to their parents.
 
 Illustrations: slides 2 and 3 use the airport scenes. On the live stage, slide 3's scene enters black and white and fills with its own colour (a 700ms wait, then 1600ms with a light sepia midway), replaying on every visit; in phone reading mode it runs once when half the picture is in view, and reduced motion, `?print` and the overview show it in full colour. Slide 6 draws the two sides of the market as vector people in the same palette (`src/components/People.jsx`: the visiting mother with her daughter, and a student flying home); slide 5's price tiers carry small route drawings (`RouteGlyph.jsx`) showing direct, one connection and two or more.
 
@@ -73,5 +75,6 @@ Illustrations: slides 2 and 3 use the airport scenes. On the live stage, slide 3
 - **Slide 3:** the two price anchors sit side by side.
 - **Slide 10:** every use-of-funds segment is white at stepped opacity. None is orange, because the brief's "one orange element per slide" rule is already met by the C$75,000. The plan has five dots, not four: October's sign-ups and quotes stay on the slide ahead of the brief's November, December, month six and month twelve.
 - **Team photos:** the matched headshots (`source-images/*_headshot_portrait_4x5.jpg`, 1200 × 1500) are converted as they are to 600 × 750 WebP, with no re-cropping. The window frame shows them with `object-fit: cover` and `object-position: 50% 40%`. The brief's 600 × 876 is the same framing at a slightly taller ratio.
-- **Backup A3** is the only slide with body text under 32px: its two tables and notes are set at 28px, and the two table notes (checks; year 3 by province) are 24px captions. Everything in it only fits at that size.
+- **Backups A2 and A3** are the only slides with body text under 32px. Since 1 October they hold the student rows and rungs as well, so A3's tables and A2's ladder are set at 26px (A2's "who" lines and the assumption under the obtainable rung at 24px), the notes on both at 26px, and A3's two table notes (checks; year 3 by province) are 24px captions. Everything in them only fits at those sizes; cutting words instead would mean cutting brief copy.
+- **Slide 4's concept phones** are 240 × 420, not 480, so the two-line headline and the sources line in `?print` still fit. Each screen's content ends about 300px down, so nothing is cropped.
 - **Lighthouse** scores weren't measured in this environment. Run Lighthouse on the Netlify preview to confirm the 95+ accessibility and 90+ performance targets.

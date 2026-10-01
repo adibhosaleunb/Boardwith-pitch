@@ -1,9 +1,9 @@
-/* 1100 × 620 on the canvas: arc labels on top, the two illustrated sides
+/* 1100 × 606 on the canvas: arc labels on top, the two illustrated sides
    with the match between them, their captions, then the channels line. */
 .loop {
   position: relative;
   width: 1100px;
-  height: 620px;
+  height: 606px;
   margin: 0;
   font-family: var(--font-text);
 }
@@ -53,9 +53,11 @@
   top: 318px;
 }
 
+/* Wide enough for a three-line caption; its text starts below the match
+   label, so the two never meet. */
 .families {
   left: 0;
-  width: 380px;
+  width: 510px;
 }
 
 .match {
@@ -69,8 +71,8 @@
 }
 
 .students {
-  left: 790px;
-  width: 310px;
+  left: 764px;
+  width: 336px;
 }
 
 .ring {
@@ -104,7 +106,7 @@
   position: absolute;
   left: 0;
   right: 0;
-  top: 548px;
+  top: 496px;
   font-size: 28px;
   line-height: 1.3;
   color: var(--bw-grey-600);

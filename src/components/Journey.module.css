@@ -108,7 +108,7 @@
 :global(.is-reading) .step > div[aria-hidden] {
   transform: scale(0.6);
   transform-origin: top left;
-  margin: 0 -96px -192px 0;
+  margin: 0 -96px -168px 0; /* 40% of the 240 × 420 phone */
 }
 
 :global(.is-reading) .detail {
